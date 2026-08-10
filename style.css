@@ -476,12 +476,12 @@ body {
 .cake {
     position: relative;
 
-    width: 600px;
-    max-width: 90vw;
+    width: 800px;
+    max-width: 95vw;
 
-    height: 380px;
+    height: 450px;
 
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 /* ŚWIECZKI */
@@ -490,17 +490,18 @@ body {
     position: absolute;
 
     left: 50%;
-    top: -70px;
+    top: -75px;
 
     transform: translateX(-50%);
 
-    width: 500px;
+    width: 650px;
+    max-width: 85vw;
 
     display: grid;
 
     grid-template-columns: repeat(6, 1fr);
 
-    gap: 15px 18px;
+    gap: 18px 25px;
 
     justify-items: center;
 
@@ -510,8 +511,8 @@ body {
 .candle {
     position: relative;
 
-    width: 28px;
-    height: 80px;
+    width: 30px;
+    height: 85px;
 
     border: none;
 
@@ -562,10 +563,10 @@ body {
 
     transform: translateX(-50%);
 
-    width: 540px;
-    max-width: 90%;
+    width: 720px;
+    max-width: 90vw;
 
-    height: 110px;
+    height: 120px;
 
     background: #ff8fcf;
 
@@ -580,14 +581,14 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 70px;
+    top: 75px;
 
     transform: translateX(-50%);
 
-    width: 540px;
-    max-width: 90%;
+    width: 720px;
+    max-width: 90vw;
 
-    height: 130px;
+    height: 150px;
 
     background: #ff4ecd;
 
@@ -599,18 +600,18 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 155px;
+    top: 175px;
 
     transform: translateX(-50%);
 
-    width: 540px;
-    max-width: 90%;
+    width: 720px;
+    max-width: 90vw;
 
-    height: 130px;
+    height: 150px;
 
     background: #7c5cff;
 
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 30px 30px;
 
     z-index: 1;
 }
