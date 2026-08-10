@@ -490,18 +490,18 @@ body {
     position: absolute;
 
     left: 50%;
-    top: -75px;
+    top: 25px;
 
     transform: translateX(-50%);
 
-    width: 650px;
-    max-width: 85vw;
+    width: 620px;
+    max-width: 80vw;
 
     display: grid;
 
     grid-template-columns: repeat(6, 1fr);
 
-    gap: 18px 25px;
+    gap: 12px 25px;
 
     justify-items: center;
 
@@ -511,8 +511,8 @@ body {
 .candle {
     position: relative;
 
-    width: 30px;
-    height: 85px;
+    width: 28px;
+    height: 70px;
 
     border: none;
 
@@ -523,6 +523,8 @@ body {
     cursor: pointer;
 
     padding: 0;
+
+    z-index: 20;
 }
 
 .flame {
@@ -572,7 +574,7 @@ body {
 
     border-radius: 50%;
 
-    z-index: 3;
+    z-index: 5;
 }
 
 /* TORT - ŚRODEK */
