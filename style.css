@@ -332,3 +332,16 @@ body {
 
     cursor: pointer;
 }
+
+.gift-image {
+    display: block;
+
+    width: min(500px, 80vw);
+    max-height: 55vh;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+}
