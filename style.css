@@ -35,25 +35,31 @@ body {
 
 .gifts-container {
     width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    gap: 70px;
-
-    flex-wrap: wrap;
+    max-width: 1000px;
 
     margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 180px);
+
+    justify-content: center;
+    align-items: start;
+
+    gap: 60px;
 }
 
 /* POJEDYNCZY PREZENT */
 
 .gift {
     position: relative;
+
     width: 180px;
     height: 170px;
+
     cursor: pointer;
+
+    justify-self: center;
 }
 
 /* PUDEŁKO */
