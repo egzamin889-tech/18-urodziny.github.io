@@ -7,23 +7,35 @@
 body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background: #111;
+    background: #0f0f1a;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    overflow: hidden;
 }
 
 .container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
     padding: 30px;
 }
 
 h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+    font-size: clamp(80px, 15vw, 180px);
+    line-height: 1;
+
+    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 30px;
 }
 
 p {
-    font-size: 22px;
+    font-size: clamp(18px, 3vw, 28px);
+    color: #d0d0dd;
 }
