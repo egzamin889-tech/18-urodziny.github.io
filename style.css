@@ -441,3 +441,229 @@ body {
 
     background: rgba(124, 92, 255, 0.2);
 }
+
+.cake-page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    overflow: hidden;
+}
+
+.cake-page h1 {
+    font-size: clamp(35px, 7vw, 65px);
+
+    margin-bottom: 10px;
+}
+
+.cake-subtitle {
+    color: #aaa;
+
+    font-size: 20px;
+
+    margin-bottom: 60px;
+}
+
+/* TORT */
+
+.cake {
+    position: relative;
+
+    width: 400px;
+    max-width: 85vw;
+
+    height: 280px;
+
+    margin-top: 50px;
+}
+
+/* ŚWIECZKI */
+
+.candles {
+    position: absolute;
+
+    left: 50%;
+    top: -70px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 35px;
+
+    z-index: 10;
+}
+
+.candle {
+    position: relative;
+
+    width: 25px;
+    height: 80px;
+
+    border: none;
+
+    background: #ff4ecd;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+
+.flame {
+    position: absolute;
+
+    left: 50%;
+    top: -38px;
+
+    transform: translateX(-50%);
+
+    font-size: 30px;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.candle.blown .flame {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(-15px)
+        scale(0.3);
+}
+
+.candle.blown {
+    opacity: 0.7;
+}
+
+/* TORT - GÓRA */
+
+.cake-top {
+    position: absolute;
+
+    left: 50%;
+    top: 20px;
+
+    transform: translateX(-50%);
+
+    width: 350px;
+    max-width: 90%;
+
+    height: 80px;
+
+    background: #ff8fcf;
+
+    border-radius: 50%;
+
+    z-index: 3;
+}
+
+/* TORT - ŚRODEK */
+
+.cake-middle {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    transform: translateX(-50%);
+
+    width: 350px;
+    max-width: 90%;
+
+    height: 100px;
+
+    background: #ff4ecd;
+
+    z-index: 2;
+}
+
+/* TORT - DÓŁ */
+
+.cake-bottom {
+    position: absolute;
+
+    left: 50%;
+    top: 125px;
+
+    transform: translateX(-50%);
+
+    width: 350px;
+    max-width: 90%;
+
+    height: 100px;
+
+    background: #7c5cff;
+
+    border-radius:
+        0 0 20px 20px;
+
+    z-index: 1;
+}
+
+/* WIADOMOŚĆ */
+
+.birthday-message {
+    margin-top: 30px;
+
+    opacity: 0;
+
+    transform: translateY(30px) scale(0.8);
+
+    pointer-events: none;
+}
+
+.birthday-message.show {
+    animation: birthdayMessage 0.8s ease forwards;
+}
+
+.birthday-message h2 {
+    font-size: clamp(30px, 6vw, 60px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4ecd,
+            #7c5cff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.birthday-message p {
+    font-size: 24px;
+
+    color: #ddd;
+
+    margin-top: 15px;
+}
+
+@keyframes birthdayMessage {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
