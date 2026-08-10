@@ -487,44 +487,41 @@ body {
 /* ŚWIECZKI */
 
 .candles {
-    position: absolute;
+    position: absolute !important;
 
-    left: 50%;
-    top: 25px;
+    left: 50% !important;
+    top: 45px !important;
 
-    transform: translateX(-50%);
+    transform: translateX(-50%) !important;
 
-    width: 620px;
-    max-width: 80vw;
+    width: 620px !important;
 
-    display: grid;
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
 
-    grid-template-columns: repeat(6, 1fr);
+    gap: 12px 20px !important;
 
-    gap: 12px 25px;
+    justify-items: center !important;
 
-    justify-items: center;
-
-    z-index: 10;
+    z-index: 50 !important;
 }
 
 .candle {
-    position: relative;
+    position: relative !important;
 
-    width: 28px;
-    height: 70px;
+    width: 28px !important;
+    height: 70px !important;
 
-    border: none;
+    border: none !important;
+    padding: 0 !important;
 
-    background: #ff4ecd;
+    background: #ff4ecd !important;
 
-    border-radius: 6px;
+    border-radius: 6px !important;
 
     cursor: pointer;
 
-    padding: 0;
-
-    z-index: 20;
+    z-index: 100 !important;
 }
 
 .flame {
