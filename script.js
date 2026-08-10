@@ -1,8 +1,36 @@
 const gifts = document.querySelectorAll(".gift");
+
 const giftContent = document.querySelector(".gift-content");
+const giftImage = document.querySelector(".gift-image");
+const giftTitle = document.querySelector(".gift-title");
+const giftText = document.querySelector(".gift-text");
 const closeButton = document.querySelector(".close-gift");
 
 let isOpening = false;
+
+
+const giftData = {
+
+    matematyka: {
+        image: "KartaPodarunkowaMatematyka.png",
+        title: "Karta podarunkowa 🎁",
+        text: "Na coś matematycznie wspaniałego ❤️"
+    },
+
+    ciem: {
+        image: "KartaPodarunkowaCiem.png",
+        title: "Jeszcze jedna niespodzianka 🎁",
+        text: "Mam nadzieję, że Ci się spodoba!"
+    },
+
+    niespodzianka: {
+        image: "",
+        title: "🎉 Niespodzianka!",
+        text: "To dopiero początek..."
+    }
+
+};
+
 
 gifts.forEach((gift) => {
 
@@ -14,7 +42,11 @@ gifts.forEach((gift) => {
 
         isOpening = true;
 
+        const giftType = gift.dataset.gift;
+        const data = giftData[giftType];
+
         gift.classList.add("opening");
+
 
         setTimeout(() => {
 
@@ -23,7 +55,20 @@ gifts.forEach((gift) => {
 
         }, 800);
 
+
         setTimeout(() => {
+
+            giftImage.src = data.image;
+            giftImage.alt = data.title;
+
+            giftTitle.textContent = data.title;
+            giftText.textContent = data.text;
+
+            if (data.image) {
+                giftImage.style.display = "block";
+            } else {
+                giftImage.style.display = "none";
+            }
 
             giftContent.classList.add("show");
 
