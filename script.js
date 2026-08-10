@@ -1,4 +1,6 @@
-document.querySelectorAll(".gift").forEach((gift) => {
+const gifts = document.querySelectorAll(".gift");
+
+gifts.forEach((gift) => {
 
     gift.addEventListener("click", () => {
 
@@ -9,8 +11,10 @@ document.querySelectorAll(".gift").forEach((gift) => {
         gift.classList.add("opening");
 
         setTimeout(() => {
+
             gift.classList.remove("opening");
             gift.classList.add("opened");
+
         }, 800);
 
     });
