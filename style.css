@@ -39,3 +39,28 @@ p {
     font-size: clamp(18px, 3vw, 28px);
     color: #d0d0dd;
 }
+.start-button {
+    display: inline-block;
+
+    margin-top: 35px;
+    padding: 16px 32px;
+
+    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
+    color: white;
+
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 50px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 20px rgba(255, 78, 205, 0.5),
+        0 0 40px rgba(124, 92, 255, 0.3);
+}
