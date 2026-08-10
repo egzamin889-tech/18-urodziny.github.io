@@ -65,20 +65,21 @@ p {
         0 0 40px rgba(124, 92, 255, 0.3);
 }
 
+
 .gifts-page {
     min-height: 100vh;
     padding: 60px 30px;
-
     text-align: center;
 }
 
 .gifts-page h1 {
-    font-size: clamp(50px, 8vw, 90px);
+    font-size: 60px;
+    color: white;
     margin-bottom: 10px;
 }
 
 .gifts-subtitle {
-    color: #aaaabd;
+    color: #aaa;
     font-size: 20px;
     margin-bottom: 60px;
 }
@@ -88,94 +89,53 @@ p {
     justify-content: center;
     align-items: center;
     gap: 60px;
-
     flex-wrap: wrap;
 }
 
 .gift {
     position: relative;
-
     width: 160px;
     height: 150px;
-
     cursor: pointer;
-
-    transition: transform 0.3s ease;
-}
-
-.gift:hover {
-    transform: translateY(-10px) scale(1.05);
 }
 
 .gift-box {
     position: absolute;
-
     left: 10px;
     bottom: 0;
-
     width: 140px;
     height: 100px;
-
-    background: linear-gradient(
-        135deg,
-        #ff4ecd,
-        #7c5cff
-    );
-
+    background: #ff4ecd;
     border-radius: 8px;
 }
 
 .gift-lid {
     position: absolute;
-
     left: 0;
     top: 35px;
-
     width: 160px;
     height: 35px;
-
-    background: linear-gradient(
-        135deg,
-        #ff6bd5,
-        #896cff
-    );
-
+    background: #7c5cff;
     border-radius: 8px;
-
     z-index: 2;
 }
 
 .gift::after {
     content: "";
-
     position: absolute;
-
     left: 50%;
     bottom: 0;
-
     transform: translateX(-50%);
-
     width: 22px;
     height: 115px;
-
-    background: rgba(255, 255, 255, 0.35);
-
+    background: rgba(255, 255, 255, 0.4);
     z-index: 3;
 }
 
 .back-button {
     display: inline-block;
-
     margin-top: 70px;
-
-    color: #aaaabd;
+    color: #aaa;
     text-decoration: none;
-
     font-size: 18px;
-
-    transition: color 0.2s ease;
-}
-
-.back-button:hover {
-    color: white;
 }
