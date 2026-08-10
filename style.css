@@ -120,42 +120,6 @@ p {
     z-index: 2;
 }
 
-
-.gift::before {
-    content: "";
-
-    position: absolute;
-    left: 50%;
-    top: 5px;
-
-    width: 28px;
-    height: 28px;
-
-    transform: translateX(-50%);
-
-    background: white;
-    border-radius: 50%;
-
-    z-index: 6;
-}
-
-.gift::after {
-    content: "";
-
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-
-    width: 22px;
-    height: 115px;
-
-    transform: translateX(-50%);
-
-    background: rgba(255, 255, 255, 0.4);
-
-    z-index: 3;
-}
-
 .back-button {
     display: inline-block;
     margin-top: 70px;
@@ -199,39 +163,34 @@ p {
     opacity: 0.7;
 }
 
-.bow {
+.gift-box::before {
+    content: "";
+
     position: absolute;
 
     left: 50%;
-    top: -20px;
-
-    width: 70px;
-    height: 45px;
+    top: 0;
 
     transform: translateX(-50%);
 
-    z-index: 10;
+    width: 24px;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.35);
 }
 
-.bow span {
+.gift-lid::before {
+    content: "";
+
     position: absolute;
 
-    top: 5px;
+    left: 50%;
+    top: 0;
 
-    width: 38px;
-    height: 28px;
+    transform: translateX(-50%);
 
-    background: white;
+    width: 24px;
+    height: 100%;
 
-    border-radius: 50% 50% 50% 10%;
-}
-
-.bow span:first-child {
-    left: 0;
-    transform: rotate(25deg);
-}
-
-.bow span:last-child {
-    right: 0;
-    transform: rotate(-25deg);
+    background: rgba(255, 255, 255, 0.35);
 }
