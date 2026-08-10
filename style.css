@@ -476,12 +476,12 @@ body {
 .cake {
     position: relative;
 
-    width: 400px;
-    max-width: 85vw;
+    width: 600px;
+    max-width: 90vw;
 
-    height: 280px;
+    height: 380px;
 
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 /* ŚWIECZKI */
@@ -494,13 +494,13 @@ body {
 
     transform: translateX(-50%);
 
-    width: 330px;
+    width: 500px;
 
     display: grid;
 
     grid-template-columns: repeat(6, 1fr);
 
-    gap: 10px 12px;
+    gap: 15px 18px;
 
     justify-items: center;
 
@@ -510,14 +510,14 @@ body {
 .candle {
     position: relative;
 
-    width: 22px;
-    height: 65px;
+    width: 28px;
+    height: 80px;
 
     border: none;
 
     background: #ff4ecd;
 
-    border-radius: 5px;
+    border-radius: 6px;
 
     cursor: pointer;
 
@@ -562,10 +562,10 @@ body {
 
     transform: translateX(-50%);
 
-    width: 350px;
+    width: 540px;
     max-width: 90%;
 
-    height: 80px;
+    height: 110px;
 
     background: #ff8fcf;
 
@@ -580,39 +580,37 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 55px;
+    top: 70px;
 
     transform: translateX(-50%);
 
-    width: 350px;
+    width: 540px;
     max-width: 90%;
 
-    height: 100px;
+    height: 130px;
 
     background: #ff4ecd;
 
     z-index: 2;
 }
-
 /* TORT - DÓŁ */
 
 .cake-bottom {
     position: absolute;
 
     left: 50%;
-    top: 125px;
+    top: 155px;
 
     transform: translateX(-50%);
 
-    width: 350px;
+    width: 540px;
     max-width: 90%;
 
-    height: 100px;
+    height: 130px;
 
     background: #7c5cff;
 
-    border-radius:
-        0 0 20px 20px;
+    border-radius: 0 0 25px 25px;
 
     z-index: 1;
 }
