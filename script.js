@@ -14,13 +14,13 @@ const giftData = {
     matematyka: {
         image: "KartaPodarunkowaMatematyka.png",
         title: "Karta podarunkowa 🎁",
-        text: "Na coś matematycznie wspaniałego ❤️"
+        text: "„Nie martw się, że masz problemy z matematyką. Zapewniam cię, że moje są o wiele większe.” — Albert Einstein"
     },
 
     ciem: {
         image: "KartaPodarunkowaCiem.png",
-        title: "Jeszcze jedna niespodzianka 🎁",
-        text: "Mam nadzieję, że Ci się spodoba!"
+        title: "",
+        text: "„Odwaga to nie brak strachu, lecz świadomość, że coś innego jest ważniejsze.” – Ambrose Redmoon "
     },
 
     niespodzianka: {
