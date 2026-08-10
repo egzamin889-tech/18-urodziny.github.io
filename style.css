@@ -15,7 +15,10 @@ body {
 
 .gifts-page {
     min-height: 100vh;
+    width: 100%;
+
     padding: 60px 30px;
+
     text-align: center;
 }
 
@@ -31,11 +34,17 @@ body {
 }
 
 .gifts-container {
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
     gap: 70px;
+
     flex-wrap: wrap;
+
+    margin: 0 auto;
 }
 
 /* POJEDYNCZY PREZENT */
