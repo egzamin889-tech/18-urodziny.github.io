@@ -1,7 +1,10 @@
 const candles = document.querySelectorAll(".candle");
-const message = document.querySelector(".birthday-message");
 
-let candlesOut = 0;
+const message =
+    document.querySelector(".birthday-message");
+
+let blownCandles = 0;
+
 
 candles.forEach((candle) => {
 
@@ -13,15 +16,15 @@ candles.forEach((candle) => {
 
         candle.classList.add("blown");
 
-        candlesOut++;
+        blownCandles++;
 
-        if (candlesOut === candles.length) {
+        if (blownCandles === candles.length) {
 
             setTimeout(() => {
 
                 message.classList.add("show");
 
-            }, 700);
+            }, 600);
 
         }
 
