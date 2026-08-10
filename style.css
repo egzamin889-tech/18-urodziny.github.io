@@ -132,6 +132,24 @@ p {
     z-index: 3;
 }
 
+.gift::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 5px;
+
+    transform: translateX(-50%);
+
+    width: 55px;
+    height: 25px;
+
+    border: 7px solid white;
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
 .back-button {
     display: inline-block;
     margin-top: 70px;
@@ -139,3 +157,5 @@ p {
     text-decoration: none;
     font-size: 18px;
 }
+
+
