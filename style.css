@@ -9,62 +9,9 @@ body {
     font-family: Arial, sans-serif;
     background: #0f0f1a;
     color: white;
-    overflow: hidden;
 }
 
-.container {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    padding: 30px;
-}
-
-h1 {
-    font-size: clamp(80px, 15vw, 180px);
-    line-height: 1;
-
-    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    margin-bottom: 30px;
-}
-
-p {
-    font-size: clamp(18px, 3vw, 28px);
-    color: #d0d0dd;
-}
-.start-button {
-    display: inline-block;
-
-    margin-top: 35px;
-    padding: 16px 32px;
-
-    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
-    color: white;
-
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-
-    border-radius: 50px;
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.start-button:hover {
-    transform: scale(1.05);
-
-    box-shadow:
-        0 0 20px rgba(255, 78, 205, 0.5),
-        0 0 40px rgba(124, 92, 255, 0.3);
-}
-
+/* STRONA PREZENTÓW */
 
 .gifts-page {
     min-height: 100vh;
@@ -74,123 +21,168 @@ p {
 
 .gifts-page h1 {
     font-size: 60px;
-    color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .gifts-subtitle {
     color: #aaa;
     font-size: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
 
 .gifts-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 60px;
+    align-items: flex-start;
+    gap: 70px;
     flex-wrap: wrap;
 }
 
+/* POJEDYNCZY PREZENT */
+
 .gift {
     position: relative;
-    width: 160px;
-    height: 150px;
+    width: 180px;
+    height: 170px;
     cursor: pointer;
 }
+
+/* PUDEŁKO */
 
 .gift-box {
     position: absolute;
     left: 10px;
     bottom: 0;
-    width: 140px;
-    height: 100px;
+
+    width: 160px;
+    height: 110px;
+
     background: #ff4ecd;
-    border-radius: 8px;
+    border-radius: 6px;
+
+    transition: transform 0.3s ease;
 }
+
+/* WSTĄŻKA NA PUDEŁKU */
+
+.gift-box::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    width: 25px;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* WIECZKO */
 
 .gift-lid {
     position: absolute;
+
     left: 0;
-    top: 35px;
-    width: 160px;
-    height: 35px;
+    top: 30px;
+
+    width: 180px;
+    height: 40px;
+
     background: #7c5cff;
-    border-radius: 8px;
+
+    border-radius: 6px;
+
     z-index: 2;
+
+    transition:
+        transform 0.6s ease,
+        top 0.6s ease;
 }
 
-.back-button {
-    display: inline-block;
-    margin-top: 70px;
-    color: #aaa;
-    text-decoration: none;
-    font-size: 18px;
+/* WSTĄŻKA NA WIECZKU */
+
+.gift-lid::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    width: 25px;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.35);
 }
+
+/* HOVER */
+
+.gift:hover {
+    transform: translateY(-8px);
+}
+
+/* OTWIERANIE */
 
 .gift.opening {
     animation: shake 0.8s ease;
 }
 
 @keyframes shake {
+
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     20% {
-        transform: rotate(-8deg);
-    }
-
-    40% {
-        transform: rotate(8deg);
-    }
-
-    60% {
         transform: rotate(-6deg);
     }
 
-    80% {
+    40% {
         transform: rotate(6deg);
     }
 
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    80% {
+        transform: rotate(4deg);
+    }
+
     100% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 }
 
-.gift.opened {
-    transform: scale(0.95);
-    opacity: 0.7;
+/* OTWARTE PUDEŁKO */
+
+.gift.opened .gift-lid {
+    top: -20px;
+    transform: rotate(-12deg) translateY(-30px);
 }
 
-.gift-box::before {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 0;
-
-    transform: translateX(-50%);
-
-    width: 24px;
-    height: 100%;
-
-    background: rgba(255, 255, 255, 0.35);
+.gift.opened .gift-box {
+    transform: translateY(5px);
 }
 
-.gift-lid::before {
-    content: "";
+/* POWRÓT */
 
-    position: absolute;
+.back-button {
+    display: inline-block;
 
-    left: 50%;
-    top: 0;
+    margin-top: 70px;
 
-    transform: translateX(-50%);
+    color: #aaa;
+    text-decoration: none;
 
-    width: 24px;
-    height: 100%;
+    font-size: 18px;
+}
 
-    background: rgba(255, 255, 255, 0.35);
+.back-button:hover {
+    color: white;
 }
