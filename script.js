@@ -13,7 +13,7 @@ const giftData = {
 
     matematyka: {
         image: "KartaPodarunkowaMatematyka.png",
-        title: "Karta podarunkowa 🎁",
+        title: "",
         text: "„Nie martw się, że masz problemy z matematyką. Zapewniam cię, że moje są o wiele większe.” — Albert Einstein"
     },
 
