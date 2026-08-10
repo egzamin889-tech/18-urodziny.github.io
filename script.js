@@ -92,3 +92,36 @@ closeButton.addEventListener("click", () => {
     }, 500);
 
 });
+
+const music = document.getElementById("background-music");
+const musicButton = document.getElementById("music-button");
+
+if (music && musicButton) {
+
+    musicButton.addEventListener("click", () => {
+
+        if (music.paused) {
+
+            music.play();
+
+            musicButton.textContent = "🔊";
+            musicButton.setAttribute(
+                "aria-label",
+                "Wycisz muzykę"
+            );
+
+        } else {
+
+            music.pause();
+
+            musicButton.textContent = "🔇";
+            musicButton.setAttribute(
+                "aria-label",
+                "Włącz muzykę"
+            );
+
+        }
+
+    });
+
+}
