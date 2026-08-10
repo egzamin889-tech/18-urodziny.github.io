@@ -11,6 +11,73 @@ body {
     color: white;
 }
 
+/* GŁÓWNE MENU */
+
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.container h1 {
+    font-size: clamp(80px, 15vw, 180px);
+    line-height: 1;
+
+    margin-bottom: 30px;
+
+    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container p {
+    font-size: clamp(18px, 3vw, 28px);
+
+    color: #d0d0dd;
+
+    margin: 0;
+}
+
+.start-button {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 16px 32px;
+
+    background: linear-gradient(135deg, #ff4ecd, #7c5cff);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    border-radius: 50px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 20px rgba(255, 78, 205, 0.5),
+        0 0 40px rgba(124, 92, 255, 0.3);
+}
+
 /* STRONA PREZENTÓW */
 
 .gifts-page {
