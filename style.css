@@ -544,8 +544,11 @@ body {
 .candles {
     position: absolute;
 
-    left: 50%;
-    top: 18px;
+    /* wszystkie świeczki trochę w lewo */
+    left: calc(50% - 15px);
+
+    /* wszystkie świeczki trochę wyżej */
+    top: 8px;
 
     transform: translateX(-50%);
 
@@ -566,16 +569,10 @@ body {
     z-index: 20;
 }
 
-.candle:nth-child(1),
-.candle:nth-child(2),
-.candle:nth-child(3),
-.candle:nth-child(4),
-.candle:nth-child(5),
-.candle:nth-child(6),
-.candle:nth-child(7),
-.candle:nth-child(8),
-.candle:nth-child(9) {
-    transform: translateX(10px);
+.candle:nth-child(-n+9) {
+    position: relative;
+
+    left: 25px;
 }
 
 
@@ -591,17 +588,27 @@ body {
 
     border-radius: 6px;
 
-    background: #ff45c7;
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #ff4fc3 0px,
+            #ff4fc3 8px,
+            #ffd6f2 8px,
+            #ffd6f2 15px
+        );
 
     cursor: pointer;
 
     z-index: 21;
 
+    box-shadow:
+        inset -3px 0 4px rgba(0, 0, 0, 0.12),
+        2px 3px 5px rgba(0, 0, 0, 0.2);
+
     transition:
         transform 0.2s ease,
         opacity 0.3s ease;
 }
-
 
 .candle:hover {
     transform: scale(1.08);
