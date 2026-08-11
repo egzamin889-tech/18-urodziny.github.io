@@ -486,7 +486,7 @@ body {
 
 
 /* ================================================= */
-/*                 TORT CZEKOLADOWY                  */
+/*                 TORT CZEKOLADOWY                 */
 /* ================================================= */
 
 .cake {
@@ -494,9 +494,11 @@ body {
 
     width: 800px;
     max-width: 95vw;
+
     height: 430px;
 
-    margin-top: 80px;
+    /* TORT NIŻEJ */
+    margin-top: 150px;
 
     flex-shrink: 0;
 }
@@ -510,41 +512,41 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 55px;
+    top: 45px;
 
     transform: translateX(-50%);
 
     width: 720px;
-    height: 145px;
+    height: 120px;
 
     background:
         radial-gradient(
-            ellipse at 50% 30%,
-            #a9683c 0%,
-            #8a4827 45%,
-            #632d18 100%
+            ellipse at 50% 35%,
+            #a8663a 0%,
+            #874522 45%,
+            #602b17 100%
         );
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 8px 15px rgba(255, 190, 130, 0.15),
-        inset 0 -15px 20px rgba(30, 5, 0, 0.25),
-        0 10px 20px rgba(0, 0, 0, 0.3);
+        inset 0 10px 18px rgba(255, 190, 130, 0.18),
+        inset 0 -14px 18px rgba(45, 12, 2, 0.3),
+        0 12px 25px rgba(0, 0, 0, 0.3);
 
-    z-index: 5;
+    z-index: 10;
 }
 
 
 /* ================================================= */
-/*              ŚRODKOWA WARSTWA                     */
+/*              ŚRODKOWA WARSTWA                    */
 /* ================================================= */
 
 .cake-middle {
     position: absolute;
 
     left: 50%;
-    top: 130px;
+    top: 105px;
 
     transform: translateX(-50%);
 
@@ -554,47 +556,47 @@ body {
     background:
         linear-gradient(
             90deg,
-            #542514 0%,
-            #71371e 20%,
+            #4d2112 0%,
+            #71371e 18%,
             #824323 50%,
-            #71371e 80%,
-            #542514 100%
+            #71371e 82%,
+            #4d2112 100%
         );
 
     border-radius:
-        8px 8px 12px 12px;
+        8px 8px 15px 15px;
 
     box-shadow:
         inset 10px 0 18px rgba(255, 170, 100, 0.06),
-        inset -12px 0 20px rgba(30, 5, 0, 0.25);
+        inset -12px 0 20px rgba(30, 5, 0, 0.3);
 
-    z-index: 3;
+    z-index: 4;
 }
 
 
 /* ================================================= */
-/*                  DOLNA WARSTWA                    */
+/*                  DOLNA WARSTWA                   */
 /* ================================================= */
 
 .cake-bottom {
     position: absolute;
 
     left: 50%;
-    top: 245px;
+    top: 220px;
 
     transform: translateX(-50%);
 
     width: 720px;
-    height: 120px;
+    height: 125px;
 
     background:
         linear-gradient(
             90deg,
-            #3b190e 0%,
-            #542616 20%,
-            #69321c 50%,
-            #542616 80%,
-            #3b190e 100%
+            #35150b 0%,
+            #542616 18%,
+            #68321c 50%,
+            #542616 82%,
+            #35150b 100%
         );
 
     border-radius:
@@ -610,49 +612,63 @@ body {
 
 
 /* ================================================= */
-/*                    KREM                           */
+/*                     KREM                          */
 /* ================================================= */
 
-.cake-middle::before {
-    content: "";
-
+.cake-cream {
     position: absolute;
 
-    left: 0;
-    top: -7px;
+    left: 50%;
 
-    width: 100%;
-    height: 14px;
+    transform: translateX(-50%);
 
-    background: #f3d5b1;
+    width: 690px;
+    height: 22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff4df 0%,
+            #f1d5b0 55%,
+            #dcb78f 100%
+        );
 
     border-radius: 50%;
 
-    z-index: 10;
+    box-shadow:
+        0 3px 5px rgba(50, 20, 5, 0.25);
+
+    z-index: 7;
 }
 
 
-.cake-bottom::before {
-    content: "";
+/* KREM MIĘDZY GÓRĄ I ŚRODKIEM */
 
-    position: absolute;
-
-    left: 0;
-    top: -7px;
-
-    width: 100%;
-    height: 14px;
-
-    background: #f3d5b1;
-
-    border-radius: 50%;
-
-    z-index: 10;
+.cream-one {
+    top: 155px;
 }
 
 
+/* KREM MIĘDZY ŚRODKIEM I DOŁEM */
+
+.cream-two {
+    top: 270px;
+}
 
 
+/* ================================================= */
+/*          WYŁĄCZAMY STARE PSEUDO-ELEMENTY         */
+/* ================================================= */
+
+.cake-top::before,
+.cake-top::after,
+.cake-middle::before,
+.cake-middle::after,
+.cake-bottom::before,
+.cake-bottom::after {
+    content: none !important;
+    display: none !important;
+}
 
 /* ================================================= */
 /*             ŚWIECZKI                             */
