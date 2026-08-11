@@ -484,12 +484,9 @@ body {
     color: #aaa;
 }
 
+```css
 /* ================================================= */
-/*                    TORT                           */
-/* ================================================= */
-
-/* ================================================= */
-/*                     TORT                          */
+/*                    TORT 🎂                        */
 /* ================================================= */
 
 .cake {
@@ -497,11 +494,10 @@ body {
 
     width: 800px;
     max-width: 95vw;
+    height: 400px;
 
-    height: 390px;
-
-    /* TORT NIŻEJ */
-    margin-top: 70px;
+    /* wyżej niż wcześniej */
+    margin-top: 25px;
 
     flex-shrink: 0;
 }
@@ -521,24 +517,24 @@ body {
 
     width: 700px;
     max-width: 88vw;
-    height: 120px;
+    height: 115px;
 
     background:
         linear-gradient(
             90deg,
-            #321308 0%,
-            #512414 15%,
-            #6b341c 50%,
-            #512414 85%,
-            #321308 100%
+            #d83d9c 0%,
+            #ed63b5 18%,
+            #f27bc1 50%,
+            #ed63b5 82%,
+            #d83d9c 100%
         );
 
-    border-radius: 0 0 28px 28px;
+    border-radius: 0 0 32px 32px;
 
     box-shadow:
-        inset 12px 0 20px rgba(0, 0, 0, 0.18),
-        inset -12px 0 20px rgba(0, 0, 0, 0.2),
-        0 15px 25px rgba(0, 0, 0, 0.35);
+        inset 10px 0 15px rgba(255,255,255,0.12),
+        inset -12px 0 18px rgba(120,20,80,0.18),
+        0 15px 30px rgba(0,0,0,0.35);
 
     z-index: 2;
 }
@@ -552,137 +548,121 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 115px;
+    top: 105px;
 
     transform: translateX(-50%);
 
     width: 700px;
     max-width: 88vw;
-    height: 100px;
+    height: 110px;
 
     background:
         linear-gradient(
             90deg,
-            #4a1d0e 0%,
-            #6e351c 15%,
-            #824322 50%,
-            #6e351c 85%,
-            #4a1d0e 100%
+            #e84ca8 0%,
+            #f36cba 18%,
+            #fa83c5 50%,
+            #f36cba 82%,
+            #e84ca8 100%
         );
 
     border-radius: 0;
 
     box-shadow:
-        inset 12px 0 18px rgba(0, 0, 0, 0.15),
-        inset -12px 0 18px rgba(0, 0, 0, 0.18);
+        inset 10px 0 15px rgba(255,255,255,0.1),
+        inset -10px 0 18px rgba(120,20,80,0.15);
 
     z-index: 4;
 }
 
 
 /* ================================================= */
-/*                     KREM 1                        */
+/*                     KREM                          */
 /* ================================================= */
+
+.cake-cream {
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 690px;
+    max-width: 86vw;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fffaff 0%,
+            #ffe5f3 55%,
+            #f5c5df 100%
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 6px rgba(100,20,70,0.25),
+        inset 0 2px 3px rgba(255,255,255,0.8);
+
+    z-index: 8;
+}
+
+
+/* krem pod górnym blatem */
 
 .cream-one {
-    position: absolute;
-
-    left: 50%;
-    top: 102px;
-
-    transform: translateX(-50%);
-
-    width: 690px;
-    max-width: 86vw;
-    height: 25px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fff9ed 0%,
-            #f5dfc3 55%,
-            #dcb991 100%
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 3px 5px rgba(40, 15, 5, 0.3);
-
-    z-index: 7;
+    top: 100px;
 }
 
 
-/* ================================================= */
-/*                     KREM 2                        */
-/* ================================================= */
+/* krem między warstwami */
 
 .cream-two {
-    position: absolute;
-
-    left: 50%;
-    top: 202px;
-
-    transform: translateX(-50%);
-
-    width: 690px;
-    max-width: 86vw;
-    height: 25px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fff9ed 0%,
-            #f5dfc3 55%,
-            #dcb991 100%
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 3px 5px rgba(40, 15, 5, 0.3);
-
-    z-index: 7;
+    top: 190px;
 }
 
 
 /* ================================================= */
-/*                  GÓRA TORTU                       */
+/*                GÓRA TORTU                        */
 /* ================================================= */
 
 .cake-top {
     position: absolute;
 
     left: 50%;
-    top: 20px;
+    top: 15px;
 
     transform: translateX(-50%);
 
     width: 700px;
     max-width: 88vw;
-    height: 105px;
+
+    /* PEŁNY OWAL */
+    height: 115px;
 
     background:
         radial-gradient(
             ellipse at 50% 38%,
-            #b87545 0%,
-            #914b27 45%,
-            #612b16 100%
+            #ff9bd4 0%,
+            #ff6fbd 42%,
+            #e842a0 75%,
+            #c92d88 100%
         );
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 10px 18px rgba(255, 200, 145, 0.2),
-        inset 0 -12px 18px rgba(45, 12, 2, 0.3),
-        0 10px 22px rgba(0, 0, 0, 0.35);
+        inset 0 9px 15px rgba(255,255,255,0.35),
+        inset 0 -12px 18px rgba(150,20,90,0.2),
+        0 10px 25px rgba(0,0,0,0.3);
 
     z-index: 10;
 }
 
 
 /* ================================================= */
-/*          MAŁA WARSTWA CIASTA POD GÓRĄ             */
+/*        CIASTO BEZPOŚREDNIO POD OWALem             */
 /* ================================================= */
 
 .cake-top::after {
@@ -690,29 +670,52 @@ body {
 
     position: absolute;
 
-    left: 50%;
+    left: 0;
+
+    /* zaczyna się dopiero pod środkiem owalu */
     top: 55px;
 
-    transform: translateX(-50%);
-
-    width: 700px;
+    width: 100%;
     height: 65px;
 
     background:
         linear-gradient(
             90deg,
-            #4d2111,
-            #75391e 18%,
-            #814222 50%,
-            #75391e 82%,
-            #4d2111
+            #d93691 0%,
+            #ec5aae 18%,
+            #f16bbb 50%,
+            #ec5aae 82%,
+            #d93691 100%
         );
 
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 12px 12px;
 
     z-index: -1;
 }
 
+
+/* ================================================= */
+/*       DELIKATNE OZDOBY NA GÓRZE TORTU             */
+/* ================================================= */
+
+.cake-top::before {
+    content: "";
+
+    position: absolute;
+
+    left: 12%;
+    top: 32%;
+
+    width: 76%;
+    height: 28%;
+
+    border-radius: 50%;
+
+    border-top: 3px solid rgba(255,255,255,0.18);
+
+    opacity: 0.8;
+}
+```
 
 
 
