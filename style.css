@@ -484,238 +484,201 @@ body {
     color: #aaa;
 }
 
-```css
-/* ================================================= */
-/*                    TORT 🎂                        */
-/* ================================================= */
+/* =========================================================
+   OSTATECZNA POPRAWKA TORTU
+   WKLEJ TEN BLOK NA SAMYM KOŃCU style.css
+   NIE DOTYKA ŚWIECZEK
+   ========================================================= */
 
 .cake {
-    position: relative;
-
-    width: 800px;
-    max-width: 95vw;
-    height: 400px;
-
-    /* wyżej niż wcześniej */
-    margin-top: 25px;
-
-    flex-shrink: 0;
+    position: relative !important;
+    width: 800px !important;
+    max-width: 95vw !important;
+    height: 390px !important;
+    margin-top: 20px !important;
 }
 
 
-/* ================================================= */
-/*                 DOLNA WARSTWA                    */
-/* ================================================= */
+/* ---------- DOLNA WARSTWA ---------- */
 
 .cake-bottom {
-    position: absolute;
+    position: absolute !important;
+    left: 50% !important;
+    top: 185px !important;
+    transform: translateX(-50%) !important;
 
-    left: 50%;
-    top: 190px;
+    width: 700px !important;
+    max-width: 88vw !important;
+    height: 115px !important;
 
-    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        #e957ae 0%,
+        #e0449f 100%
+    ) !important;
 
-    width: 700px;
-    max-width: 88vw;
-    height: 115px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #d83d9c 0%,
-            #ed63b5 18%,
-            #f27bc1 50%,
-            #ed63b5 82%,
-            #d83d9c 100%
-        );
-
-    border-radius: 0 0 32px 32px;
+    border-radius: 0 0 30px 30px !important;
 
     box-shadow:
-        inset 10px 0 15px rgba(255,255,255,0.12),
-        inset -12px 0 18px rgba(120,20,80,0.18),
-        0 15px 30px rgba(0,0,0,0.35);
+        inset 0 -10px 15px rgba(120, 20, 80, 0.15),
+        0 15px 25px rgba(0, 0, 0, 0.3) !important;
 
-    z-index: 2;
+    z-index: 2 !important;
 }
 
 
-/* ================================================= */
-/*                 ŚRODKOWA WARSTWA                 */
-/* ================================================= */
+/* ---------- ŚRODKOWA WARSTWA ---------- */
 
 .cake-middle {
-    position: absolute;
+    position: absolute !important;
+    left: 50% !important;
+    top: 100px !important;
+    transform: translateX(-50%) !important;
 
-    left: 50%;
-    top: 105px;
+    width: 700px !important;
+    max-width: 88vw !important;
+    height: 110px !important;
 
-    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        #f06abd 0%,
+        #e951aa 100%
+    ) !important;
 
-    width: 700px;
-    max-width: 88vw;
-    height: 110px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #e84ca8 0%,
-            #f36cba 18%,
-            #fa83c5 50%,
-            #f36cba 82%,
-            #e84ca8 100%
-        );
-
-    border-radius: 0;
+    border-radius: 0 !important;
 
     box-shadow:
-        inset 10px 0 15px rgba(255,255,255,0.1),
-        inset -10px 0 18px rgba(120,20,80,0.15);
+        inset 0 -8px 12px rgba(130, 20, 80, 0.12) !important;
 
-    z-index: 4;
+    z-index: 4 !important;
 }
 
 
-/* ================================================= */
-/*                     KREM                          */
-/* ================================================= */
+/* ---------- KREM ---------- */
 
 .cake-cream {
-    position: absolute;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
 
-    left: 50%;
+    width: 690px !important;
+    max-width: 86vw !important;
+    height: 24px !important;
 
-    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffe7f3 100%
+    ) !important;
 
-    width: 690px;
-    max-width: 86vw;
-    height: 25px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fffaff 0%,
-            #ffe5f3 55%,
-            #f5c5df 100%
-        );
-
-    border-radius: 50%;
+    border-radius: 50% !important;
 
     box-shadow:
-        0 3px 6px rgba(100,20,70,0.25),
-        inset 0 2px 3px rgba(255,255,255,0.8);
+        0 3px 6px rgba(80, 20, 60, 0.25) !important;
 
-    z-index: 8;
+    z-index: 8 !important;
 }
 
 
-/* krem pod górnym blatem */
+/* krem 1 */
 
 .cream-one {
-    top: 100px;
+    top: 92px !important;
 }
 
 
-/* krem między warstwami */
+/* krem 2 */
 
 .cream-two {
-    top: 190px;
+    top: 177px !important;
 }
 
 
-/* ================================================= */
-/*                GÓRA TORTU                        */
-/* ================================================= */
+/* ---------- GÓRA TORTU ---------- */
 
 .cake-top {
-    position: absolute;
+    position: absolute !important;
 
-    left: 50%;
-    top: 15px;
+    left: 50% !important;
+    top: 0 !important;
+    transform: translateX(-50%) !important;
 
-    transform: translateX(-50%);
+    width: 700px !important;
+    max-width: 88vw !important;
 
-    width: 700px;
-    max-width: 88vw;
+    /*
+       WAŻNE:
+       pełny owal, a nie półokrąg
+    */
+    height: 115px !important;
 
-    /* PEŁNY OWAL */
-    height: 115px;
+    background: linear-gradient(
+        180deg,
+        #ff9bd5 0%,
+        #ff6fc1 50%,
+        #e944a3 100%
+    ) !important;
 
-    background:
-        radial-gradient(
-            ellipse at 50% 38%,
-            #ff9bd4 0%,
-            #ff6fbd 42%,
-            #e842a0 75%,
-            #c92d88 100%
-        );
-
-    border-radius: 50%;
+    border-radius: 50% !important;
 
     box-shadow:
-        inset 0 9px 15px rgba(255,255,255,0.35),
-        inset 0 -12px 18px rgba(150,20,90,0.2),
-        0 10px 25px rgba(0,0,0,0.3);
+        inset 0 8px 15px rgba(255,255,255,0.35),
+        inset 0 -10px 15px rgba(130,20,80,0.18),
+        0 8px 20px rgba(0,0,0,0.28) !important;
 
-    z-index: 10;
+    z-index: 10 !important;
 }
 
 
-/* ================================================= */
-/*        CIASTO BEZPOŚREDNIO POD OWALem             */
-/* ================================================= */
+/*
+   Ta część robi pionową ścianę pod owalem,
+   ale NIE zasłania jego przedniej krawędzi.
+*/
 
 .cake-top::after {
-    content: "";
+    content: "" !important;
 
-    position: absolute;
+    position: absolute !important;
 
-    left: 0;
+    left: 0 !important;
+    top: 55px !important;
 
-    /* zaczyna się dopiero pod środkiem owalu */
-    top: 55px;
+    width: 100% !important;
+    height: 55px !important;
 
-    width: 100%;
-    height: 65px;
+    background: linear-gradient(
+        180deg,
+        #ed5caf 0%,
+        #df449e 100%
+    ) !important;
 
-    background:
-        linear-gradient(
-            90deg,
-            #d93691 0%,
-            #ec5aae 18%,
-            #f16bbb 50%,
-            #ec5aae 82%,
-            #d93691 100%
-        );
+    border-radius: 0 !important;
 
-    border-radius: 0 0 12px 12px;
-
-    z-index: -1;
+    z-index: -1 !important;
 }
 
 
-/* ================================================= */
-/*       DELIKATNE OZDOBY NA GÓRZE TORTU             */
-/* ================================================= */
+/*
+   Subtelny połysk na górze.
+*/
 
 .cake-top::before {
-    content: "";
+    content: "" !important;
 
-    position: absolute;
+    position: absolute !important;
 
-    left: 12%;
-    top: 32%;
+    left: 18% !important;
+    top: 22px !important;
 
-    width: 76%;
-    height: 28%;
+    width: 64% !important;
+    height: 25px !important;
 
-    border-radius: 50%;
+    background: rgba(255,255,255,0.13) !important;
 
-    border-top: 3px solid rgba(255,255,255,0.18);
+    border-radius: 50% !important;
 
-    opacity: 0.8;
+    z-index: 1 !important;
 }
-```
 
 
 
