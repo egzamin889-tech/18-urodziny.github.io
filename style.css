@@ -871,17 +871,3 @@ body {
 
     background: rgba(255, 255, 255, 0.2);
 }
-
-/* TEST NOWEGO TORTU */
-
-.cake-top {
-    background: red !important;
-}
-
-.cake-middle {
-    background: blue !important;
-}
-
-.cake-bottom {
-    background: green !important;
-}
