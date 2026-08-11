@@ -506,59 +506,167 @@ body {
 
 /* ===== CZEKOLADOWY TORT 🍫 ===== */
 
+/* ================================================= */
+/*              CZEKOLADOWY TORT 🍫                 */
+/* ================================================= */
+
+.cake {
+    position: relative;
+
+    width: 800px;
+    max-width: 95vw;
+    height: 430px;
+
+    margin-top: 80px;
+
+    flex-shrink: 0;
+}
+
+
+/* ================= GÓRA TORTU ================= */
+
 .cake-top {
+    position: absolute;
+
+    left: 50%;
+    top: 35px;
+
+    transform: translateX(-50%);
+
+    width: 720px;
+    max-width: 90vw;
+
+    height: 145px;
+
     background:
         radial-gradient(
             ellipse at 50% 35%,
-            #fff8ef 0%,
-            #f5dfc5 25%,
-            #d9a875 65%,
-            #a96838 100%
-        ) !important;
+            #fff8ed 0%,
+            #f4dfc7 20%,
+            #d59a63 55%,
+            #9a542d 100%
+        );
+
+    border-radius: 50%;
 
     box-shadow:
-        inset 0 -12px 20px rgba(90, 40, 15, 0.2),
-        inset 0 8px 15px rgba(255, 255, 255, 0.55),
-        0 12px 25px rgba(0, 0, 0, 0.3) !important;
+        inset 0 8px 15px rgba(255, 255, 255, 0.5),
+        inset 0 -12px 20px rgba(70, 25, 5, 0.25),
+        0 10px 25px rgba(0, 0, 0, 0.3);
+
+    z-index: 5;
 }
+
+
+/* ================= CZEKOLADOWA WARSTWA ================= */
 
 .cake-middle {
+    position: absolute;
+
+    left: 50%;
+    top: 105px;
+
+    transform: translateX(-50%);
+
+    width: 720px;
+    max-width: 90vw;
+
+    height: 150px;
+
     background:
         linear-gradient(
             90deg,
-            #6b321d 0%,
-            #8b4828 15%,
-            #713719 50%,
-            #8b4828 85%,
-            #542614 100%
-        ) !important;
+            #4a2113 0%,
+            #71391f 15%,
+            #8b4a28 35%,
+            #71351c 50%,
+            #8b4a28 65%,
+            #71391f 85%,
+            #4a2113 100%
+        );
+
+    border-radius:
+        12px 12px 18px 18px;
 
     box-shadow:
-        inset 8px 0 15px rgba(255, 255, 255, 0.08),
-        inset -10px 0 18px rgba(35, 10, 0, 0.25) !important;
+        inset 8px 0 15px rgba(255, 255, 255, 0.07),
+        inset -10px 0 18px rgba(35, 10, 0, 0.25);
+
+    z-index: 3;
 }
 
+
+/* ================= DOLNA WARSTWA ================= */
+
 .cake-bottom {
+    position: absolute;
+
+    left: 50%;
+    top: 230px;
+
+    transform: translateX(-50%);
+
+    width: 720px;
+    max-width: 90vw;
+
+    height: 145px;
+
     background:
         linear-gradient(
             90deg,
-            #4b2114 0%,
-            #68301b 18%,
-            #542516 50%,
-            #68301b 82%,
-            #3b180e 100%
-        ) !important;
+            #35150c 0%,
+            #542817 15%,
+            #71381f 35%,
+            #5c2a18 50%,
+            #71381f 65%,
+            #542817 85%,
+            #35150c 100%
+        );
+
+    border-radius:
+        12px 12px 35px 35px;
 
     box-shadow:
         inset 8px 0 15px rgba(255, 255, 255, 0.06),
         inset -10px 0 18px rgba(20, 5, 0, 0.3),
-        0 18px 30px rgba(0, 0, 0, 0.35) !important;
+        0 18px 30px rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
 }
 
 
-/* ===== KREM MIĘDZY WARSTWAMI ===== */
+/* ================= KREM 1 ================= */
 
 .cake-middle::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -11px;
+
+    width: 100%;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fffaf3,
+            #f1dcc3
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 6px rgba(60, 25, 5, 0.2);
+
+    z-index: 5;
+}
+
+
+/* ================= KREM 2 ================= */
+
+.cake-bottom::before {
     content: "";
 
     position: absolute;
@@ -567,69 +675,53 @@ body {
     top: -10px;
 
     width: 100%;
-    height: 22px;
+    height: 23px;
 
     background:
         linear-gradient(
             to bottom,
-            #fffaf2,
-            #f6dfc5
-        ) !important;
+            #fffaf3,
+            #ead0b2
+        );
 
     border-radius: 50%;
 
     box-shadow:
-        0 3px 6px rgba(70, 30, 10, 0.2);
-}
+        0 3px 6px rgba(60, 25, 5, 0.2);
 
-.cake-bottom::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: -8px;
-
-    width: 100%;
-    height: 20px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fffaf2,
-            #efd5b8
-        ) !important;
-
-    border-radius: 50%;
+    z-index: 5;
 }
 
 
-/* ===== KREMOWA POLEWA NA GÓRZE ===== */
+/* ================= POLEWA ================= */
 
 .cake-top::after {
     content: "";
 
     position: absolute;
 
-    left: 3%;
+    left: 2%;
 
-    bottom: -22px;
+    bottom: -28px;
 
-    width: 94%;
-    height: 45px;
+    width: 96%;
+    height: 55px;
 
     background:
         linear-gradient(
             to bottom,
-            #fff8ee,
-            #ead0b2
+            #fff8ee 0%,
+            #f4ddc4 65%,
+            #e5c29f 100%
         );
 
     border-radius:
         0 0 45% 45%;
 
     box-shadow:
-        0 5px 8px rgba(70, 30, 10, 0.15);
+        0 5px 8px rgba(60, 25, 5, 0.18);
+
+    z-index: -1;
 }
 
 /* ================================================= */
