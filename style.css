@@ -488,9 +488,8 @@ body {
 /*                    TORT                           */
 /* ================================================= */
 
-```css
 /* ================================================= */
-/*                    TORT 🎂                        */
+/*                     TORT                          */
 /* ================================================= */
 
 .cake {
@@ -498,12 +497,154 @@ body {
 
     width: 800px;
     max-width: 95vw;
-    height: 430px;
 
-    margin-top: 150px;
+    height: 390px;
+
+    /* TORT NIŻEJ */
+    margin-top: 70px;
 
     flex-shrink: 0;
 }
+
+
+/* ================================================= */
+/*                 DOLNA WARSTWA                    */
+/* ================================================= */
+
+.cake-bottom {
+    position: absolute;
+
+    left: 50%;
+    top: 190px;
+
+    transform: translateX(-50%);
+
+    width: 700px;
+    max-width: 88vw;
+    height: 120px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #321308 0%,
+            #512414 15%,
+            #6b341c 50%,
+            #512414 85%,
+            #321308 100%
+        );
+
+    border-radius: 0 0 28px 28px;
+
+    box-shadow:
+        inset 12px 0 20px rgba(0, 0, 0, 0.18),
+        inset -12px 0 20px rgba(0, 0, 0, 0.2),
+        0 15px 25px rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
+}
+
+
+/* ================================================= */
+/*                 ŚRODKOWA WARSTWA                 */
+/* ================================================= */
+
+.cake-middle {
+    position: absolute;
+
+    left: 50%;
+    top: 115px;
+
+    transform: translateX(-50%);
+
+    width: 700px;
+    max-width: 88vw;
+    height: 100px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4a1d0e 0%,
+            #6e351c 15%,
+            #824322 50%,
+            #6e351c 85%,
+            #4a1d0e 100%
+        );
+
+    border-radius: 0;
+
+    box-shadow:
+        inset 12px 0 18px rgba(0, 0, 0, 0.15),
+        inset -12px 0 18px rgba(0, 0, 0, 0.18);
+
+    z-index: 4;
+}
+
+
+/* ================================================= */
+/*                     KREM 1                        */
+/* ================================================= */
+
+.cream-one {
+    position: absolute;
+
+    left: 50%;
+    top: 102px;
+
+    transform: translateX(-50%);
+
+    width: 690px;
+    max-width: 86vw;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff9ed 0%,
+            #f5dfc3 55%,
+            #dcb991 100%
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 5px rgba(40, 15, 5, 0.3);
+
+    z-index: 7;
+}
+
+
+/* ================================================= */
+/*                     KREM 2                        */
+/* ================================================= */
+
+.cream-two {
+    position: absolute;
+
+    left: 50%;
+    top: 202px;
+
+    transform: translateX(-50%);
+
+    width: 690px;
+    max-width: 86vw;
+    height: 25px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff9ed 0%,
+            #f5dfc3 55%,
+            #dcb991 100%
+        );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 5px rgba(40, 15, 5, 0.3);
+
+    z-index: 7;
+}
+
 
 /* ================================================= */
 /*                  GÓRA TORTU                       */
@@ -513,141 +654,66 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 35px;
+    top: 20px;
 
     transform: translateX(-50%);
 
-    width: 720px;
-    height: 120px;
+    width: 700px;
+    max-width: 88vw;
+    height: 105px;
 
     background:
         radial-gradient(
-            ellipse at 50% 35%,
-            #a8663a 0%,
-            #874522 45%,
-            #602b17 100%
+            ellipse at 50% 38%,
+            #b87545 0%,
+            #914b27 45%,
+            #612b16 100%
         );
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 10px 18px rgba(255, 190, 130, 0.18),
-        inset 0 -14px 18px rgba(45, 12, 2, 0.3),
-        0 12px 25px rgba(0, 0, 0, 0.3);
+        inset 0 10px 18px rgba(255, 200, 145, 0.2),
+        inset 0 -12px 18px rgba(45, 12, 2, 0.3),
+        0 10px 22px rgba(0, 0, 0, 0.35);
 
     z-index: 10;
 }
 
+
 /* ================================================= */
-/*              ŚRODKOWA WARSTWA                    */
+/*          MAŁA WARSTWA CIASTA POD GÓRĄ             */
 /* ================================================= */
 
-.cake-middle {
+.cake-top::after {
+    content: "";
+
     position: absolute;
 
     left: 50%;
-    top: 105px;
+    top: 55px;
 
     transform: translateX(-50%);
 
-    width: 720px;
-    height: 125px;
+    width: 700px;
+    height: 65px;
 
     background:
         linear-gradient(
             90deg,
-            #4d2112 0%,
-            #71371e 18%,
-            #824323 50%,
-            #71371e 82%,
-            #4d2112 100%
+            #4d2111,
+            #75391e 18%,
+            #814222 50%,
+            #75391e 82%,
+            #4d2111
         );
 
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 8px 8px;
 
-    box-shadow:
-        inset 10px 0 18px rgba(255, 170, 100, 0.06),
-        inset -12px 0 20px rgba(30, 5, 0, 0.3);
-
-    z-index: 4;
+    z-index: -1;
 }
 
-/* ================================================= */
-/*                  DOLNA WARSTWA                   */
-/* ================================================= */
 
-.cake-bottom {
-    position: absolute;
-
-    left: 50%;
-    top: 220px;
-
-    transform: translateX(-50%);
-
-    width: 720px;
-    height: 125px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #35150b 0%,
-            #542616 18%,
-            #68321c 50%,
-            #542616 82%,
-            #35150b 100%
-        );
-
-    border-radius: 0 0 35px 35px;
-
-    box-shadow:
-        inset 10px 0 18px rgba(255, 170, 100, 0.05),
-        inset -12px 0 20px rgba(20, 3, 0, 0.3),
-        0 18px 30px rgba(0, 0, 0, 0.35);
-
-    z-index: 2;
-}
-
-/* ================================================= */
-/*                     KREM                          */
-/* ================================================= */
-
-.cake-cream {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 690px;
-    height: 24px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fff4df 0%,
-            #f1d5b0 55%,
-            #dcb78f 100%
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 3px 5px rgba(50, 20, 5, 0.25);
-
-    z-index: 8;
-}
-
-/* krem pod górą */
-
-.cream-one {
-    top: 145px;
-}
-
-/* krem pomiędzy warstwami */
-
-.cream-two {
-    top: 260px;
-}
 
 
 /* ================================================= */
