@@ -489,207 +489,125 @@ body {
 /*                    TORT                           */
 /* ================================================= */
 
-.cake {
-    position: relative;
-
-    width: 800px;
-
-    max-width: 95vw;
-
-    height: 430px;
-
-    margin-top: 80px;
-
-    flex-shrink: 0;
-}
-
-
 /* ================================================= */
-/*                 TORT CZEKOLADOWY 🍫               */
-/* ================================================= */
-
-/* ================================================= */
-/*                 TORT CZEKOLADOWY 🍫               */
+/*                     TORT                          */
 /* ================================================= */
 
 .cake {
     position: relative;
 
-    width: 800px;
-    max-width: 95vw;
-    height: 430px;
+    width: 720px;
+    height: 320px;
 
-    margin-top: 80px;
-
-    flex-shrink: 0;
+    margin-top: 100px;
 }
 
 
-/* ================================================= */
-/*                    GÓRA TORTU                     */
-/* ================================================= */
+/* GÓRA */
 
 .cake-top {
     position: absolute;
 
-    left: 50%;
-    top: 35px;
+    top: 40px;
+    left: 0;
 
-    transform: translateX(-50%);
-
-    width: 720px;
-    height: 125px;
+    width: 100%;
+    height: 80px;
 
     background:
         radial-gradient(
-            ellipse at 50% 35%,
-            #a9683c 0%,
-            #864622 45%,
-            #5b2916 100%
+            ellipse at center,
+            #9a5a35 0%,
+            #7a3d21 70%,
+            #5a2a16 100%
         );
 
     border-radius: 50%;
-
-    box-shadow:
-        inset 0 8px 15px rgba(255, 190, 130, 0.15),
-        inset 0 -15px 20px rgba(30, 5, 0, 0.3),
-        0 10px 20px rgba(0, 0, 0, 0.3);
-
-    z-index: 5;
 }
 
 
-/* ================================================= */
-/*                 PIERWSZY KREM                     */
-/* ================================================= */
-
-.cake-cream {
-    position: absolute;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 690px;
-    height: 18px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fff1d9,
-            #e7c19b
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 2px 5px rgba(50, 20, 5, 0.25);
-
-    z-index: 8;
-}
-
-.cream-one {
-    top: 151px;
-}
-
-.cream-two {
-    top: 286px;
-}
-
-
-/* ================================================= */
-/*                 ŚRODKOWA CZEKOLADA                */
-/* ================================================= */
+/* ŚRODEK */
 
 .cake-middle {
     position: absolute;
 
-    left: 50%;
-    top: 105px;
+    top: 95px;
+    left: 0;
 
-    transform: translateX(-50%);
-
-    width: 720px;
-    height: 145px;
+    width: 100%;
+    height: 90px;
 
     background:
         linear-gradient(
-            90deg,
-            #542514 0%,
-            #71371e 18%,
-            #814323 50%,
-            #71371e 82%,
-            #542514 100%
+            to right,
+            #5a2a16,
+            #7a4024,
+            #5a2a16
         );
-
-    border-radius: 10px;
-
-    box-shadow:
-        inset 10px 0 18px rgba(255, 170, 100, 0.06),
-        inset -12px 0 20px rgba(30, 5, 0, 0.25);
-
-    z-index: 3;
 }
 
 
-/* ================================================= */
-/*                  DOLNA CZEKOLADA                  */
-/* ================================================= */
+/* DÓŁ */
 
 .cake-bottom {
     position: absolute;
 
-    left: 50%;
-    top: 230px;
+    top: 185px;
+    left: 0;
 
-    transform: translateX(-50%);
-
-    width: 720px;
-    height: 145px;
+    width: 100%;
+    height: 100px;
 
     background:
         linear-gradient(
-            90deg,
-            #3b190e 0%,
-            #542616 18%,
-            #69321c 50%,
-            #542616 82%,
-            #3b190e 100%
+            to right,
+            #4a1f12,
+            #63301c,
+            #4a1f12
         );
 
     border-radius:
-        10px 10px 35px 35px;
-
-    box-shadow:
-        inset 10px 0 18px rgba(255, 170, 100, 0.05),
-        inset -12px 0 20px rgba(20, 3, 0, 0.3),
-        0 18px 30px rgba(0, 0, 0, 0.35);
-
-    z-index: 2;
+        0 0 35px 35px;
 }
 
 
-/* ================================================= */
-/*          WYŁĄCZAMY STARE PSEUDO-ELEMENTY         */
-/* ================================================= */
+/* KREM */
 
-.cake-top::before,
-.cake-top::after,
-.cake-middle::before,
-.cake-middle::after,
-.cake-bottom::before,
-.cake-bottom::after {
-    content: none !important;
-    display: none !important;
+.cake-middle::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 12px;
+
+    background: #f7e3c4;
 }
 
-.cake-top::before,
+.cake-bottom::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 12px;
+
+    background: #f7e3c4;
+}
+
+
+/* WYŁĄCZ STARE RZECZY */
+
 .cake-top::after,
-.cake-middle::before,
+.cake-top::before,
 .cake-middle::after,
-.cake-bottom::before,
 .cake-bottom::after {
-    content: none !important;
     display: none !important;
 }
 
