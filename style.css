@@ -484,9 +484,8 @@ body {
     color: #aaa;
 }
 
-
 /* ================================================= */
-/*                 TORT CZEKOLADOWY                 */
+/*                    TORT                           */
 /* ================================================= */
 
 .cake {
@@ -494,15 +493,12 @@ body {
 
     width: 800px;
     max-width: 95vw;
-
     height: 430px;
 
-    /* TORT NIŻEJ */
     margin-top: 150px;
 
     flex-shrink: 0;
 }
-
 
 /* ================================================= */
 /*                  GÓRA TORTU                       */
@@ -512,31 +508,31 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 45px;
+    top: 35px;
 
     transform: translateX(-50%);
 
-    width: 720px;
-    height: 120px;
+    width: 700px;
+    max-width: 90vw;
+    height: 115px;
 
     background:
         radial-gradient(
             ellipse at 50% 35%,
-            #a8663a 0%,
-            #874522 45%,
-            #602b17 100%
+            #b87343 0%,
+            #8a4724 45%,
+            #5b2814 100%
         );
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 10px 18px rgba(255, 190, 130, 0.18),
-        inset 0 -14px 18px rgba(45, 12, 2, 0.3),
-        0 12px 25px rgba(0, 0, 0, 0.3);
+        inset 0 9px 15px rgba(255, 190, 130, 0.2),
+        inset 0 -12px 18px rgba(45, 12, 2, 0.35),
+        0 10px 22px rgba(0, 0, 0, 0.35);
 
     z-index: 10;
 }
-
 
 /* ================================================= */
 /*              ŚRODKOWA WARSTWA                    */
@@ -546,25 +542,25 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 105px;
+    top: 125px;
 
     transform: translateX(-50%);
 
-    width: 720px;
-    height: 125px;
+    width: 700px;
+    max-width: 90vw;
+    height: 120px;
 
     background:
         linear-gradient(
             90deg,
-            #4d2112 0%,
-            #71371e 18%,
+            #4a1e10 0%,
+            #6f351d 18%,
             #824323 50%,
-            #71371e 82%,
-            #4d2112 100%
+            #6f351d 82%,
+            #4a1e10 100%
         );
 
-    border-radius:
-        8px 8px 15px 15px;
+    border-radius: 6px 6px 18px 18px;
 
     box-shadow:
         inset 10px 0 18px rgba(255, 170, 100, 0.06),
@@ -572,7 +568,6 @@ body {
 
     z-index: 4;
 }
-
 
 /* ================================================= */
 /*                  DOLNA WARSTWA                   */
@@ -582,34 +577,33 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 220px;
+    top: 245px;
 
     transform: translateX(-50%);
 
-    width: 720px;
+    width: 700px;
+    max-width: 90vw;
     height: 125px;
 
     background:
         linear-gradient(
             90deg,
-            #35150b 0%,
-            #542616 18%,
-            #68321c 50%,
-            #542616 82%,
-            #35150b 100%
+            #32140a 0%,
+            #512515 18%,
+            #69321b 50%,
+            #512515 82%,
+            #32140a 100%
         );
 
-    border-radius:
-        8px 8px 35px 35px;
+    border-radius: 6px 6px 35px 35px;
 
     box-shadow:
         inset 10px 0 18px rgba(255, 170, 100, 0.05),
         inset -12px 0 20px rgba(20, 3, 0, 0.3),
-        0 18px 30px rgba(0, 0, 0, 0.35);
+        0 18px 30px rgba(0, 0, 0, 0.4);
 
     z-index: 2;
 }
-
 
 /* ================================================= */
 /*                     KREM                          */
@@ -622,42 +616,41 @@ body {
 
     transform: translateX(-50%);
 
-    width: 690px;
-    height: 22px;
+    width: 675px;
+    max-width: 87vw;
+    height: 25px;
 
     background:
         linear-gradient(
             to bottom,
-            #fff4df 0%,
-            #f1d5b0 55%,
-            #dcb78f 100%
+            #fff8e9 0%,
+            #f4dcbf 55%,
+            #d9b38b 100%
         );
 
     border-radius: 50%;
 
     box-shadow:
-        0 3px 5px rgba(50, 20, 5, 0.25);
+        0 3px 6px rgba(50, 20, 5, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.7);
 
     z-index: 7;
 }
 
-
-/* KREM MIĘDZY GÓRĄ I ŚRODKIEM */
+/* Krem pomiędzy górą i środkową warstwą */
 
 .cream-one {
-    top: 155px;
+    top: 112px;
 }
 
-
-/* KREM MIĘDZY ŚRODKIEM I DOŁEM */
+/* Krem pomiędzy środkową i dolną warstwą */
 
 .cream-two {
-    top: 270px;
+    top: 232px;
 }
 
-
 /* ================================================= */
-/*          WYŁĄCZAMY STARE PSEUDO-ELEMENTY         */
+/*        WYŁĄCZAMY STARE PSEUDO-ELEMENTY           */
 /* ================================================= */
 
 .cake-top::before,
@@ -669,6 +662,7 @@ body {
     content: none !important;
     display: none !important;
 }
+
 
 /* ================================================= */
 /*             ŚWIECZKI                             */
