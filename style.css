@@ -504,40 +504,132 @@ body {
 }
 
 
-/* ================================================= */
-/*              GÓRA TORTU                           */
-/* ================================================= */
+/* ===== CZEKOLADOWY TORT 🍫 ===== */
 
 .cake-top {
-    position: absolute;
-
-    left: 50%;
-    top: 25px;
-
-    transform: translateX(-50%);
-
-    width: 720px;
-    max-width: 90vw;
-
-    height: 170px;
-
     background:
         radial-gradient(
             ellipse at 50% 35%,
-            #fff1fa 0%,
-            #ffd2ec 18%,
-            #ff9ed5 55%,
-            #f879c5 100%
-        );
+            #fff8ef 0%,
+            #f5dfc5 25%,
+            #d9a875 65%,
+            #a96838 100%
+        ) !important;
+
+    box-shadow:
+        inset 0 -12px 20px rgba(90, 40, 15, 0.2),
+        inset 0 8px 15px rgba(255, 255, 255, 0.55),
+        0 12px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.cake-middle {
+    background:
+        linear-gradient(
+            90deg,
+            #6b321d 0%,
+            #8b4828 15%,
+            #713719 50%,
+            #8b4828 85%,
+            #542614 100%
+        ) !important;
+
+    box-shadow:
+        inset 8px 0 15px rgba(255, 255, 255, 0.08),
+        inset -10px 0 18px rgba(35, 10, 0, 0.25) !important;
+}
+
+.cake-bottom {
+    background:
+        linear-gradient(
+            90deg,
+            #4b2114 0%,
+            #68301b 18%,
+            #542516 50%,
+            #68301b 82%,
+            #3b180e 100%
+        ) !important;
+
+    box-shadow:
+        inset 8px 0 15px rgba(255, 255, 255, 0.06),
+        inset -10px 0 18px rgba(20, 5, 0, 0.3),
+        0 18px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+
+/* ===== KREM MIĘDZY WARSTWAMI ===== */
+
+.cake-middle::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -10px;
+
+    width: 100%;
+    height: 22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fffaf2,
+            #f6dfc5
+        ) !important;
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 -12px 18px rgba(190, 45, 130, 0.18),
-        inset 0 8px 15px rgba(255, 255, 255, 0.5),
-        0 12px 25px rgba(0, 0, 0, 0.22);
+        0 3px 6px rgba(70, 30, 10, 0.2);
+}
 
-    z-index: 3;
+.cake-bottom::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -8px;
+
+    width: 100%;
+    height: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fffaf2,
+            #efd5b8
+        ) !important;
+
+    border-radius: 50%;
+}
+
+
+/* ===== KREMOWA POLEWA NA GÓRZE ===== */
+
+.cake-top::after {
+    content: "";
+
+    position: absolute;
+
+    left: 3%;
+
+    bottom: -22px;
+
+    width: 94%;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff8ee,
+            #ead0b2
+        );
+
+    border-radius:
+        0 0 45% 45%;
+
+    box-shadow:
+        0 5px 8px rgba(70, 30, 10, 0.15);
 }
 
 /* ================================================= */
@@ -660,179 +752,7 @@ body {
 }
 
 
-/* ================================================= */
-/*             ŚRODKOWA WARSTWA TORTU                */
-/* ================================================= */
 
-.cake-middle {
-    position: absolute;
-
-    left: 50%;
-    top: 105px;
-
-    transform: translateX(-50%);
-
-    width: 720px;
-    max-width: 90vw;
-
-    height: 155px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #e936aa 0%,
-            #ff65c9 18%,
-            #ff4fc3 50%,
-            #ff65c9 82%,
-            #df329f 100%
-        );
-
-    border-radius:
-        18px 18px 8px 8px;
-
-    box-shadow:
-        inset 8px 0 15px rgba(255, 255, 255, 0.08),
-        inset -10px 0 18px rgba(120, 0, 80, 0.15);
-
-    z-index: 2;
-}
-
-
-/* ================================================= */
-/*              DOLNA WARSTWA TORTU                  */
-/* ================================================= */
-
-.cake-bottom {
-    position: absolute;
-
-    left: 50%;
-    top: 220px;
-
-    transform: translateX(-50%);
-
-    width: 720px;
-    max-width: 90vw;
-
-    height: 150px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #5a3bd0 0%,
-            #8062ff 20%,
-            #7657ff 50%,
-            #8062ff 80%,
-            #5435c5 100%
-        );
-
-    border-radius:
-        10px 10px 35px 35px;
-
-    box-shadow:
-        inset 8px 0 15px rgba(255, 255, 255, 0.08),
-        inset -10px 0 18px rgba(40, 15, 120, 0.2),
-        0 18px 30px rgba(0, 0, 0, 0.28);
-
-    z-index: 1;
-}
-
-.cake-middle::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: -10px;
-
-    width: 100%;
-    height: 24px;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            #fff7fc 0%,
-            #ffe3f3 65%,
-            #f8c6e2 100%
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 3px 5px rgba(0, 0, 0, 0.12);
-}
-
-.cake-bottom::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: -8px;
-
-    width: 100%;
-    height: 20px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #fff8fd,
-            #ffdff0
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 3px 5px rgba(0, 0, 0, 0.12);
-}
-
-.cake-middle::after {
-    content: "•  •  •  •  •  •  •  •  •  •";
-
-    position: absolute;
-
-    left: 50%;
-    top: 55px;
-
-    transform: translateX(-50%);
-
-    width: 90%;
-
-    color: #ffd5f0;
-
-    font-size: 28px;
-
-    letter-spacing: 12px;
-
-    opacity: 0.8;
-
-    white-space: nowrap;
-}
-
-.cake-top::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -35px;
-
-    width: 100%;
-    height: 55px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ff8fd2,
-            #ff65c7
-        );
-
-    border-radius:
-        0 0 45% 45%;
-
-    opacity: 0.95;
-
-    z-index: -1;
-}
 
 /* ================================================= */
 /*           WSZYSTKIEGO NAJLEPSZEGO                 */
