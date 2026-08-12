@@ -24,7 +24,7 @@ const giftData = {
     },
 
     zacmienie: {
-        image: "WspoleOgladanieZacmieniaSlonca.png",
+        image: "WspolneOgladanieZacmieniaSlonca.png",
         title: "",
         text: "Mieliśmy razem obejrzeć, ale się nie udało więc jak otworzysz wszystkie prezenty to w menu głównym jest dla ciebie zaćmienie.. tylko twoje."
     },
@@ -32,7 +32,7 @@ const giftData = {
     meteoryty: {
         image: "NocMeteorytów.jpg",
         title: "",
-        text: "Chciałes sobie wyobrażać wspólne oglądania spadających meteorytów.. teraz już nie musisz."
+        text: "Chciałes sobie wyobrażać wspólne oglądania spadających meteorytów.. teraz już nie musisz. W głównym menu je masz.."
     }
 
 };
