@@ -23,10 +23,10 @@ const giftData = {
         text: "„Odwaga to nie brak strachu, lecz świadomość, że coś innego jest ważniejsze.” – Ambrose Redmoon "
     },
 
-    niespodzianka: {
-        image: "",
-        title: "🎉 Niespodzianka!",
-        text: "To dopiero początek..."
+    zacmienie: {
+        image: "WspoleOgladanieZacmieniaSlonca.png",
+        title: "",
+        text: "Mieliśmy razem obejrzeć, ale się nie udało więc jak otworzysz wszystkie prezenty to w menu głównym jest dla ciebie zaćmienie.. tylko twoje."
     }
 
 };
