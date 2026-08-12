@@ -7,22 +7,15 @@
 html,
 body {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
 }
 
 body {
     overflow: hidden;
-
     font-family: Arial, sans-serif;
-
-    background: #090a14;
+    background: #02030a;
     color: white;
 }
-
-
-/* ========================================= */
-/*                 STRONA                    */
-/* ========================================= */
 
 .eclipse-page {
     width: 100vw;
@@ -31,26 +24,84 @@ body {
 
 .sky {
     position: relative;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 50% 45%,
-            #25395b 0%,
-            #17233e 35%,
-            #0c1225 70%,
-            #050711 100%
+            ellipse at 50% 48%,
+            #30496d 0%,
+            #223552 22%,
+            #17243c 45%,
+            #0d1528 70%,
+            #04060e 100%
         );
+
+    transition:
+        background 0.2s linear;
 }
 
+/* =========================================================
+   GWIAZDY
+   ========================================================= */
 
-/* ========================================= */
-/*                  SŁOŃCE                   */
-/* ========================================= */
+.stars {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.95) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.8) 0 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.9) 0 1.4px, transparent 2px),
+        radial-gradient(circle, rgba(190,210,255,.7) 0 1px, transparent 1.5px);
+
+    background-size:
+        170px 150px,
+        230px 190px,
+        310px 260px,
+        430px 330px;
+
+    background-position:
+        20px 30px,
+        90px 80px,
+        150px 20px,
+        30px 180px;
+
+    transition: opacity 0.4s ease;
+
+    z-index: 2;
+}
+
+/* =========================================================
+   DELIKATNE ŚWIATŁO ATMOSFERY
+   ========================================================= */
+
+.sky::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(255, 190, 90, .12),
+            transparent 42%
+        );
+
+    opacity: 1;
+
+    transition: opacity .2s linear;
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================================
+   SŁOŃCE
+   ========================================================= */
 
 .sun {
     position: absolute;
@@ -58,18 +109,21 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
 
     transform: translate(-50%, -50%);
 
     border-radius: 50%;
 
     z-index: 5;
+
+    pointer-events: none;
 }
 
-
-/* POŚWIATA */
+/* =========================================================
+   POŚWIATA SŁOŃCA
+   ========================================================= */
 
 .sun-glow {
     position: absolute;
@@ -77,8 +131,8 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 520px;
-    height: 520px;
+    width: 650px;
+    height: 650px;
 
     transform: translate(-50%, -50%);
 
@@ -87,50 +141,91 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(255, 214, 100, 0.45) 0%,
-            rgba(255, 170, 40, 0.22) 35%,
-            rgba(255, 130, 20, 0.08) 60%,
-            transparent 72%
+            rgba(255, 245, 190, .42) 0%,
+            rgba(255, 204, 85, .28) 22%,
+            rgba(255, 150, 30, .14) 45%,
+            rgba(255, 100, 10, .05) 62%,
+            transparent 75%
         );
 
-    filter: blur(12px);
+    filter: blur(18px);
+
+    transition:
+        opacity .15s linear,
+        transform .15s linear;
 }
 
-
-/* TARCZA SŁOŃCA */
+/* =========================================================
+   TARCZA SŁOŃCA
+   ========================================================= */
 
 .sun-core {
     position: absolute;
 
-    inset: 25px;
+    inset: 27px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at 45% 40%,
-            #fffbd0 0%,
-            #fff09a 25%,
-            #ffc928 55%,
-            #ff9d00 80%,
-            #ed6800 100%
+            circle at 42% 38%,
+            #fffef0 0%,
+            #fff8bd 17%,
+            #ffe46a 38%,
+            #ffc226 61%,
+            #ff9410 82%,
+            #e85d00 100%
         );
 
     box-shadow:
-        0 0 30px rgba(255, 205, 70, 0.9),
-        0 0 70px rgba(255, 160, 20, 0.65),
-        0 0 130px rgba(255, 120, 10, 0.35);
+        0 0 22px rgba(255, 238, 150, .95),
+        0 0 55px rgba(255, 190, 50, .8),
+        0 0 100px rgba(255, 145, 20, .55),
+        0 0 170px rgba(255, 100, 0, .25);
+
+    transition:
+        opacity .08s linear,
+        transform .08s linear;
 }
 
-
-/* ========================================= */
-/*                 KORONA                   */
-/* ========================================= */
+/* =========================================================
+   KORONA
+   ========================================================= */
 
 .corona {
     position: absolute;
 
-    inset: 0;
+    inset: -35px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 0 48%,
+            rgba(255, 247, 205, .05) 50%,
+            rgba(255, 239, 180, .2) 53%,
+            rgba(255, 235, 170, .06) 60%,
+            transparent 72%
+        );
+
+    filter: blur(4px);
+
+    opacity: 0;
+
+    transition: opacity .15s linear;
+
+    z-index: -1;
+}
+
+/* Długie smugi korony */
+
+.corona::before,
+.corona::after {
+    content: "";
+
+    position: absolute;
+    inset: -40px;
 
     border-radius: 50%;
 
@@ -138,67 +233,210 @@ body {
         conic-gradient(
             from 0deg,
             transparent 0deg,
-            rgba(255, 235, 170, 0.7) 8deg,
-            transparent 18deg,
-            rgba(255, 245, 190, 0.55) 35deg,
-            transparent 50deg,
-            rgba(255, 230, 150, 0.65) 72deg,
-            transparent 90deg,
-            rgba(255, 245, 200, 0.5) 115deg,
-            transparent 135deg,
-            rgba(255, 230, 150, 0.6) 160deg,
+            rgba(255,255,235,.55) 5deg,
+            transparent 13deg,
+            transparent 32deg,
+            rgba(255,245,205,.4) 39deg,
+            transparent 48deg,
+            transparent 75deg,
+            rgba(255,245,205,.5) 82deg,
+            transparent 93deg,
+            transparent 130deg,
+            rgba(255,245,210,.35) 139deg,
+            transparent 151deg,
             transparent 180deg,
-            rgba(255, 245, 200, 0.5) 210deg,
+            rgba(255,245,210,.45) 188deg,
+            transparent 201deg,
             transparent 230deg,
-            rgba(255, 230, 150, 0.6) 255deg,
-            transparent 275deg,
-            rgba(255, 245, 200, 0.5) 300deg,
-            transparent 320deg,
-            rgba(255, 230, 150, 0.6) 340deg,
-            transparent 360deg
+            rgba(255,245,210,.4) 239deg,
+            transparent 251deg,
+            transparent 280deg,
+            rgba(255,245,210,.5) 288deg,
+            transparent 300deg,
+            transparent 325deg,
+            rgba(255,245,210,.35) 332deg,
+            transparent 345deg
         );
 
     filter: blur(8px);
-
-    opacity: 0.45;
 }
 
+.corona::after {
+    transform: rotate(21deg) scale(1.04);
+    opacity: .55;
+}
 
-/* ========================================= */
-/*                  GWIAZDY                  */
-/* ========================================= */
+/* =========================================================
+   KSIĘŻYC
+   ========================================================= */
 
-.stars {
+.moon {
     position: absolute;
 
+    left: calc(50% - 520px);
+    top: 50%;
+
+    width: 330px;
+    height: 330px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    background: #020307;
+
+    box-shadow:
+        0 0 8px rgba(0,0,0,.9),
+        0 0 25px rgba(0,0,0,.65);
+
+    overflow: visible;
+}
+
+/* powierzchnia Księżyca */
+
+.moon-surface {
+    position: absolute;
     inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 32% 30%,
+            #30323a 0%,
+            #202229 35%,
+            #11131a 70%,
+            #05060a 100%
+        );
+
+    box-shadow:
+        inset -18px -12px 30px rgba(0,0,0,.9),
+        inset 12px 8px 20px rgba(100,105,120,.08);
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   KRATERY
+   ========================================================= */
+
+.moon-crater {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 32%,
+            rgba(0,0,0,.15) 0 30%,
+            rgba(0,0,0,.55) 55%,
+            rgba(0,0,0,.8) 100%
+        );
+
+    box-shadow:
+        inset 4px 4px 7px rgba(0,0,0,.8),
+        inset -3px -3px 5px rgba(110,110,120,.08);
+
+    opacity: .75;
+}
+
+.crater-1 {
+    width: 58px;
+    height: 58px;
+    left: 55px;
+    top: 62px;
+}
+
+.crater-2 {
+    width: 34px;
+    height: 34px;
+    left: 175px;
+    top: 48px;
+}
+
+.crater-3 {
+    width: 72px;
+    height: 72px;
+    left: 150px;
+    top: 150px;
+}
+
+.crater-4 {
+    width: 43px;
+    height: 43px;
+    left: 45px;
+    top: 195px;
+}
+
+.crater-5 {
+    width: 29px;
+    height: 29px;
+    left: 235px;
+    top: 225px;
+}
+
+/* =========================================================
+   ŚWIATŁO NA KRAWĘDZI KSIĘŻYCA
+   ========================================================= */
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+    inset: -3px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.08);
+
+    opacity: .2;
+
+    transition: opacity .1s linear;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   DIAMOND RING
+   ========================================================= */
+
+.diamond-ring {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(.3);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,245,1) 0%,
+            rgba(255,245,180,.9) 10%,
+            rgba(255,190,50,.45) 35%,
+            transparent 70%
+        );
+
+    filter: blur(2px);
 
     opacity: 0;
 
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1.5px, transparent 2px);
+    z-index: 20;
 
-    background-size:
-        170px 150px,
-        230px 190px,
-        310px 260px;
-
-    background-position:
-        20px 30px,
-        90px 80px,
-        150px 20px;
-
-    transition: opacity 1s ease;
-
-    z-index: 2;
+    pointer-events: none;
 }
 
-
-/* ========================================= */
-/*                INFORMACJA                */
-/* ========================================= */
+/* =========================================================
+   INFORMACJA
+   ========================================================= */
 
 .eclipse-info {
     position: absolute;
@@ -210,25 +448,34 @@ body {
 
     text-align: center;
 
-    z-index: 20;
+    z-index: 40;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
 }
 
 .eclipse-info h1 {
     font-size: clamp(30px, 5vw, 60px);
 
     margin-bottom: 12px;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.8);
 }
 
 .eclipse-info p {
     color: #c7cada;
 
     font-size: clamp(16px, 2vw, 22px);
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.9);
 }
 
-
-/* ========================================= */
-/*             PEŁNE ZAĆMIENIE              */
-/* ========================================= */
+/* =========================================================
+   PEŁNE ZAĆMIENIE
+   ========================================================= */
 
 .totality-message {
     position: absolute;
@@ -238,7 +485,7 @@ body {
 
     transform:
         translate(-50%, -50%)
-        scale(0.8);
+        scale(.8);
 
     text-align: center;
 
@@ -247,12 +494,18 @@ body {
     z-index: 30;
 
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity .8s ease,
+        transform .8s ease;
+
+    pointer-events: none;
 }
 
 .totality-message h2 {
     font-size: clamp(30px, 5vw, 65px);
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.25),
+        0 4px 20px rgba(0,0,0,.9);
 }
 
 .totality-message p {
@@ -261,10 +514,9 @@ body {
     font-size: 35px;
 }
 
-
-/* ========================================= */
-/*              POWRÓT DO MENU              */
-/* ========================================= */
+/* =========================================================
+   PRZYCISK
+   ========================================================= */
 
 .back-button {
     position: absolute;
@@ -280,13 +532,15 @@ body {
 
     text-decoration: none;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,.1);
+
+    border: 1px solid rgba(255,255,255,.08);
 
     backdrop-filter: blur(10px);
 
     transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+        transform .2s ease,
+        background .2s ease;
 
     z-index: 100;
 }
@@ -294,5 +548,80 @@ body {
 .back-button:hover {
     transform: scale(1.05);
 
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,.2);
+}
+
+/* =========================================================
+   KONTROLKI
+   ========================================================= */
+
+.eclipse-controls {
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 100;
+}
+
+.eclipse-controls button {
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: rgba(15,18,30,.65);
+
+    color: white;
+
+    padding: 9px 16px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.eclipse-controls button:hover {
+    background: rgba(255,255,255,.15);
+
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .sun,
+    .moon {
+        width: 220px;
+        height: 220px;
+    }
+
+    .sun-core {
+        inset: 18px;
+    }
+
+    .sun-glow {
+        width: 430px;
+        height: 430px;
+    }
+
+    .moon-crater {
+        transform: scale(.67);
+        transform-origin: center;
+    }
+
+    .eclipse-info {
+        bottom: 35px;
+        width: 90%;
+    }
 }
