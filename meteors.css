@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #02030b;
+}
+
+
+/* ========================================= */
+/*                  NIEBO                    */
+/* ========================================= */
+
+.meteor-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.sky {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            #18264d 0%,
+            #0d1734 35%,
+            #070c20 65%,
+            #02030b 100%
+        );
+}
+
+
+/* ========================================= */
+/*                  GWIAZDY                  */
+/* ========================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 1.5px, transparent 2px);
+
+    background-size:
+        150px 140px,
+        230px 210px,
+        320px 280px;
+
+    background-position:
+        20px 30px,
+        90px 100px,
+        150px 40px;
+
+    opacity: 0.75;
+}
+
+
+/* ========================================= */
+/*             DELIKATNA MGŁA               */
+/* ========================================= */
+
+.sky::before {
+    content: "";
+
+    position: absolute;
+    left: -10%;
+    top: 35%;
+
+    width: 120%;
+    height: 30%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(80, 105, 170, 0.08),
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* ========================================= */
+/*                 METEORY                  */
+/* ========================================= */
+
+.meteor-field {
+    position: absolute;
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+.meteor {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #fff8d5;
+
+    box-shadow:
+        0 0 6px #fff,
+        0 0 14px #ffd76a,
+        0 0 25px rgba(255, 170, 40, 0.8);
+
+    transform: rotate(-35deg);
+}
+
+
+/* OGON METEORYTU */
+
+.meteor::before {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 3px;
+
+    right: 2px;
+    top: 1px;
+
+    transform-origin: right center;
+
+    background:
+        linear-gradient(
+            to left,
+            rgba(255, 245, 190, 0.95),
+            rgba(255, 190, 70, 0.45),
+            transparent
+        );
+
+    filter: blur(1px);
+}
+
+
+/* WIĘKSZY METEORYT */
+
+.meteor.big {
+    width: 8px;
+    height: 8px;
+}
+
+.meteor.big::before {
+    width: 210px;
+    height: 4px;
+}
+
+
+/* ========================================= */
+/*              ROZBŁYSK                    */
+/* ========================================= */
+
+.meteor.flash {
+    animation: meteorFlash 0.35s ease-out forwards;
+}
+
+@keyframes meteorFlash {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(8);
+        opacity: 0;
+    }
+}
+
+
+/* ========================================= */
+/*              DWIE POSTACIE               */
+/* ========================================= */
+
+.people {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 330px;
+    height: 250px;
+
+    z-index: 20;
+}
+
+
+/* WSPÓLNA POSTAĆ */
+
+.person {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120px;
+    height: 230px;
+}
+
+
+/* PIERWSZA */
+
+.person-one {
+    left: 20px;
+}
+
+
+/* DRUGA */
+
+.person-two {
+    right: 20px;
+}
+
+
+/* GŁOWA */
+
+.head {
+    position: absolute;
+
+    left: 50%;
+    top: 10px;
+
+    transform: translateX(-50%);
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    background: #090a11;
+
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,0.02);
+}
+
+
+/* CIAŁO */
+
+.body {
+    position: absolute;
+
+    left: 50%;
+    top: 67px;
+
+    transform: translateX(-50%);
+
+    width: 76px;
+    height: 105px;
+
+    background: #080910;
+
+    border-radius:
+        35px 35px 12px 12px;
+}
+
+
+/* NOGI */
+
+.legs {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 65px;
+    height: 70px;
+
+    border-left: 25px solid #07080e;
+    border-right: 25px solid #07080e;
+}
+
+
+/* RAMIONA */
+
+.person::before,
+.person::after {
+    content: "";
+
+    position: absolute;
+
+    top: 78px;
+
+    width: 22px;
+    height: 100px;
+
+    background: #080910;
+
+    border-radius: 20px;
+}
+
+
+/* LEWA RĘKA */
+
+.person::before {
+    left: 12px;
+
+    transform: rotate(12deg);
+}
+
+
+/* PRAWA RĘKA */
+
+.person::after {
+    right: 12px;
+
+    transform: rotate(-12deg);
+}
+
+
+/* ========================================= */
+/*         EFEKT PATRZENIA W NIEBO          */
+/* ========================================= */
+
+.person-one .head,
+.person-two .head {
+    transform:
+        translateX(-50%)
+        rotate(-8deg);
+}
+
+.person-two .head {
+    transform:
+        translateX(-50%)
+        rotate(8deg);
+}
+
+
+/* ========================================= */
+/*                  NAPIS                   */
+/* ========================================= */
+
+.meteor-title {
+    position: absolute;
+
+    left: 50%;
+    top: 35px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+.meteor-title h1 {
+    font-size: clamp(30px, 5vw, 60px);
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.2);
+}
+
+.meteor-title p {
+    margin-top: 12px;
+
+    font-size: clamp(16px, 2vw, 22px);
+
+    color: #b9c2dd;
+}
+
+
+/* ========================================= */
+/*              POWRÓT DO MENU              */
+/* ========================================= */
+
+.back-button {
+    position: absolute;
+
+    left: 25px;
+    top: 25px;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+    z-index: 100;
+}
+
+.back-button:hover {
+    transform: scale(1.05);
+
+    background: rgba(255,255,255,0.2);
+}
+
+
+/* ========================================= */
+/*            RESPONSYWNOŚĆ                 */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+    .people {
+        transform:
+            translateX(-50%)
+            scale(0.75);
+
+        transform-origin: bottom center;
+    }
+
+    .meteor-title {
+        width: 90%;
+    }
+
+    .meteor-title h1 {
+        font-size: 34px;
+    }
+}
