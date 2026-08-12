@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    background: #090a14;
+    color: white;
+}
+
+
+/* ========================================= */
+/*                 STRONA                    */
+/* ========================================= */
+
+.eclipse-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.sky {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #25395b 0%,
+            #17233e 35%,
+            #0c1225 70%,
+            #050711 100%
+        );
+}
+
+
+/* ========================================= */
+/*                  SŁOŃCE                   */
+/* ========================================= */
+
+.sun {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 300px;
+    height: 300px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
+
+/* POŚWIATA */
+
+.sun-glow {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 520px;
+    height: 520px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 214, 100, 0.45) 0%,
+            rgba(255, 170, 40, 0.22) 35%,
+            rgba(255, 130, 20, 0.08) 60%,
+            transparent 72%
+        );
+
+    filter: blur(12px);
+}
+
+
+/* TARCZA SŁOŃCA */
+
+.sun-core {
+    position: absolute;
+
+    inset: 25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 40%,
+            #fffbd0 0%,
+            #fff09a 25%,
+            #ffc928 55%,
+            #ff9d00 80%,
+            #ed6800 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 205, 70, 0.9),
+        0 0 70px rgba(255, 160, 20, 0.65),
+        0 0 130px rgba(255, 120, 10, 0.35);
+}
+
+
+/* ========================================= */
+/*                 KORONA                   */
+/* ========================================= */
+
+.corona {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 235, 170, 0.7) 8deg,
+            transparent 18deg,
+            rgba(255, 245, 190, 0.55) 35deg,
+            transparent 50deg,
+            rgba(255, 230, 150, 0.65) 72deg,
+            transparent 90deg,
+            rgba(255, 245, 200, 0.5) 115deg,
+            transparent 135deg,
+            rgba(255, 230, 150, 0.6) 160deg,
+            transparent 180deg,
+            rgba(255, 245, 200, 0.5) 210deg,
+            transparent 230deg,
+            rgba(255, 230, 150, 0.6) 255deg,
+            transparent 275deg,
+            rgba(255, 245, 200, 0.5) 300deg,
+            transparent 320deg,
+            rgba(255, 230, 150, 0.6) 340deg,
+            transparent 360deg
+        );
+
+    filter: blur(8px);
+
+    opacity: 0.45;
+}
+
+
+/* ========================================= */
+/*                  GWIAZDY                  */
+/* ========================================= */
+
+.stars {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1.5px, transparent 2px);
+
+    background-size:
+        170px 150px,
+        230px 190px,
+        310px 260px;
+
+    background-position:
+        20px 30px,
+        90px 80px,
+        150px 20px;
+
+    transition: opacity 1s ease;
+
+    z-index: 2;
+}
+
+
+/* ========================================= */
+/*                INFORMACJA                */
+/* ========================================= */
+
+.eclipse-info {
+    position: absolute;
+
+    left: 50%;
+    bottom: 55px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 20;
+}
+
+.eclipse-info h1 {
+    font-size: clamp(30px, 5vw, 60px);
+
+    margin-bottom: 12px;
+}
+
+.eclipse-info p {
+    color: #c7cada;
+
+    font-size: clamp(16px, 2vw, 22px);
+}
+
+
+/* ========================================= */
+/*             PEŁNE ZAĆMIENIE              */
+/* ========================================= */
+
+.totality-message {
+    position: absolute;
+
+    left: 50%;
+    top: 78%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.8);
+
+    text-align: center;
+
+    opacity: 0;
+
+    z-index: 30;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.totality-message h2 {
+    font-size: clamp(30px, 5vw, 65px);
+}
+
+.totality-message p {
+    margin-top: 10px;
+
+    font-size: 35px;
+}
+
+
+/* ========================================= */
+/*              POWRÓT DO MENU              */
+/* ========================================= */
+
+.back-button {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+    z-index: 100;
+}
+
+.back-button:hover {
+    transform: scale(1.05);
+
+    background: rgba(255, 255, 255, 0.2);
+}
