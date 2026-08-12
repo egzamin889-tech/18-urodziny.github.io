@@ -1,433 +1,529 @@
-const sky = document.querySelector(".sky");
-const sun = document.querySelector(".sun");
-const sunCore = document.querySelector(".sun-core");
-const sunGlow = document.querySelector(".sun-glow");
-const corona = document.querySelector(".corona");
-const moon = document.querySelector(".moon");
-const stars = document.querySelector(".stars");
-const info = document.querySelector(".eclipse-info");
-const totalityMessage = document.querySelector(".totality-message");
+document.addEventListener("DOMContentLoaded", () => {
 
-let diamondRing = document.querySelector(".diamond-ring");
+    const sky = document.querySelector(".sky");
+    const sun = document.querySelector(".sun");
+    const sunCore = document.querySelector(".sun-core");
+    const sunGlow = document.querySelector(".sun-glow");
+    const corona = document.querySelector(".corona");
+    const moon = document.querySelector(".moon");
+    const stars = document.querySelector(".stars");
+    const info = document.querySelector(".eclipse-info");
+    const totalityMessage = document.querySelector(".totality-message");
 
-if (!diamondRing) {
-    diamondRing = document.createElement("div");
-    diamondRing.className = "diamond-ring";
-    sky.appendChild(diamondRing);
-}
+    let diamondRing = document.querySelector(".diamond-ring");
 
-
-/* =========================================================
-   USTAWIENIA
-   ========================================================= */
-
-const SETTINGS = {
-    duration: 26000,
-
-    // Pozycja początkowa i końcowa Księżyca.
-    // Im większa różnica, tym dłuższa droga.
-    startX: -520,
-    endX: 520,
-
-    // Delikatna pionowa nieregularność toru.
-    verticalAmplitude: 8
-};
-
-
-/* =========================================================
-   FUNKCJE
-   ========================================================= */
-
-function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
-}
-
-function lerp(a, b, t) {
-    return a + (b - a) * t;
-}
-
-function easeInOut(t) {
-    return t < 0.5
-        ? 2 * t * t
-        : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
-
-
-/*
-    Krzywa zaćmienia.
-
-    Dzięki temu Księżyc nie jedzie idealnie liniowo.
-    Początek i koniec są spokojniejsze.
-*/
-function eclipseProgress(t) {
-    return easeInOut(clamp(t, 0, 1));
-}
-
-
-/* =========================================================
-   OBLICZANIE ZASŁONIĘCIA SŁOŃCA
-   ========================================================= */
-
-function calculateCoverage(moonX) {
-    const sunRadius = 138;
-    const moonRadius = 165;
-
-    const distance = Math.abs(moonX);
-
-    /*
-        0 = brak zasłonięcia
-        1 = całkowite zaćmienie
-    */
-
-    const visibleDistance =
-        sunRadius + moonRadius;
-
-    const totalDistance =
-        Math.abs(moonRadius - sunRadius);
-
-    if (distance >= visibleDistance) {
-        return 0;
+    if (!diamondRing) {
+        diamondRing = document.createElement("div");
+        diamondRing.className = "diamond-ring";
+        sky.appendChild(diamondRing);
     }
 
-    if (distance <= totalDistance) {
-        return 1;
+
+    /*
+    ============================================================
+        USTAWIENIA ANIMACJI
+    ============================================================
+    */
+
+    const DURATION = 30000;
+
+    /*
+        Księżyc zaczyna daleko po lewej
+        i kończy daleko po prawej.
+    */
+
+    const START_X = -650;
+    const END_X = 650;
+
+
+    /*
+    ============================================================
+        FUNKCJE
+    ============================================================
+    */
+
+    function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
     }
 
-    return 1 -
-        (distance - totalDistance) /
-        (visibleDistance - totalDistance);
-}
-
-
-/* =========================================================
-   KOLOR NIEBA
-   ========================================================= */
-
-function updateSky(coverage) {
-    /*
-        Naturalne zaćmienie nie robi nagle czarnego nieba.
-        Najpierw robi się bardziej szare,
-        potem granatowe,
-        a dopiero przy totality bardzo ciemne.
-    */
-
-    const darkness = Math.pow(coverage, 1.7);
-
-    const r = Math.round(48 - darkness * 43);
-    const g = Math.round(73 - darkness * 67);
-    const b = Math.round(108 - darkness * 91);
-
-    sky.style.background = `
-        radial-gradient(
-            ellipse at 50% 48%,
-            rgb(${r + 8}, ${g + 8}, ${b + 8}) 0%,
-            rgb(${r}, ${g}, ${b}) 30%,
-            rgb(${Math.max(r - 7, 2)}, ${Math.max(g - 9, 3)}, ${Math.max(b - 15, 5)}) 62%,
-            rgb(2, 3, 8) 100%
-        )
-    `;
-
-    sky.style.setProperty(
-        "--darkness",
-        darkness
-    );
-}
-
-
-/* =========================================================
-   SŁOŃCE
-   ========================================================= */
-
-function updateSun(coverage) {
-    /*
-        Poświata gaśnie znacznie wcześniej
-        niż sama tarcza.
-    */
-
-    const glowOpacity =
-        Math.pow(1 - coverage, 2.2);
-
-    const coreOpacity =
-        clamp(1 - coverage * 1.08, 0, 1);
-
-    sunGlow.style.opacity =
-        glowOpacity;
-
-    sunCore.style.opacity =
-        coreOpacity;
 
     /*
-        Im mniej Słońca widać,
-        tym mniejsza jego poświata.
+        Łagodny ruch na początku i końcu,
+        ale środek przejścia jest dość naturalny.
     */
 
-    const glowScale =
-        lerp(.65, 1, glowOpacity);
-
-    sunGlow.style.transform =
-        `translate(-50%, -50%) scale(${glowScale})`;
-}
-
-
-/* =========================================================
-   KORONA
-   ========================================================= */
-
-function updateCorona(coverage) {
-    /*
-        Korona zaczyna się pojawiać dopiero
-        bardzo blisko totality.
-    */
-
-    let coronaOpacity = 0;
-
-    if (coverage > .88) {
-        coronaOpacity =
-            clamp((coverage - .88) / .12, 0, 1);
+    function ease(t) {
+        return t * t * (3 - 2 * t);
     }
 
+
     /*
-        W samym środku totality korona jest najmocniejsza.
+    ============================================================
+        RUCH KSIĘŻYCA
+    ============================================================
     */
 
-    if (coverage >= .995) {
-        coronaOpacity = 1;
+    function updateMoon(progress) {
+
+        const x = START_X + (END_X - START_X) * ease(progress);
+
+        /*
+            Bardzo małe odchylenie pionowe.
+            Księżyc nie jedzie idealnie po linijce.
+        */
+
+        const y =
+            Math.sin(progress * Math.PI) * 7;
+
+        moon.style.left =
+            `calc(50% + ${x}px)`;
+
+        moon.style.top =
+            `calc(50% + ${y}px)`;
+
+        return x;
     }
 
-    corona.style.opacity =
-        coronaOpacity * .9;
-}
-
-
-/* =========================================================
-   GWIAZDY
-   ========================================================= */
-
-function updateStars(coverage) {
-    /*
-        Gwiazdy nie powinny wyskoczyć od razu.
-
-        Przy około 70% zaczynają być bardzo delikatne.
-        Przy totality są wyraźne.
-    */
-
-    let opacity = 0;
-
-    if (coverage > .65) {
-        opacity =
-            clamp((coverage - .65) / .35, 0, 1);
-    }
-
-    opacity =
-        Math.pow(opacity, .75);
-
-    stars.style.opacity =
-        opacity;
-}
-
-
-/* =========================================================
-   DIAMOND RING
-   ========================================================= */
-
-function updateDiamondRing(coverage, moonX) {
-    /*
-        Diamond ring pojawia się tylko przez bardzo krótki
-        moment tuż przed całkowitym zaćmieniem.
-
-        Najważniejsze:
-        nie pokazujemy go podczas całego totality.
-    */
-
-    const nearTotality =
-        coverage > .965 && coverage < .9995;
-
-    if (!nearTotality) {
-        diamondRing.style.opacity = "0";
-        return;
-    }
 
     /*
-        0 -> początek diamond ring
-        1 -> jego maksimum
-        0 -> tuż przed totality
+    ============================================================
+        ZASŁONIĘCIE SŁOŃCA
+    ============================================================
     */
 
-    const local =
-        clamp((coverage - .965) / .0345, 0, 1);
+    function getCoverage(moonX) {
 
-    const intensity =
-        Math.sin(local * Math.PI);
+        /*
+            Słońce ma około 276px średnicy,
+            Księżyc około 330px.
 
-    /*
-        Pozycja punktu światła zależy od strony,
-        z której Księżyc zasłania Słońce.
-    */
+            Dzięki temu Księżyc może całkowicie
+            zakryć tarczę Słońca.
+        */
 
-    const direction =
-        moonX < 0 ? -1 : 1;
+        const sunRadius = 138;
+        const moonRadius = 165;
 
-    diamondRing.style.left =
-        `calc(50% + ${direction * 100}px)`;
+        const distance = Math.abs(moonX);
 
-    diamondRing.style.top =
-        "50%";
+        /*
+            Poza tym dystansem Księżyc
+            w ogóle nie dotyka Słońca.
+        */
 
-    diamondRing.style.opacity =
-        intensity;
-
-    diamondRing.style.transform =
-        `translate(-50%, -50%) scale(${0.35 + intensity * .8})`;
-}
+        if (distance >= sunRadius + moonRadius) {
+            return 0;
+        }
 
 
-/* =========================================================
-   TOR KSIĘŻYCA
-   ========================================================= */
+        /*
+            Kiedy środek Księżyca jest wystarczająco blisko,
+            Słońce jest całkowicie zakryte.
+        */
 
-function updateMoon(t) {
-    const progress =
-        eclipseProgress(t);
-
-    const x =
-        lerp(
-            SETTINGS.startX,
-            SETTINGS.endX,
-            progress
-        );
-
-    /*
-        Minimalne odchylenie góra/dół.
-        Dzięki temu ruch nie jest komputerowo idealny.
-    */
-
-    const y =
-        Math.sin(progress * Math.PI) *
-        SETTINGS.verticalAmplitude;
-
-    moon.style.left =
-        `calc(50% + ${x}px)`;
-
-    moon.style.top =
-        `calc(50% + ${y}px)`;
-
-    return x;
-}
+        if (distance <= moonRadius - sunRadius) {
+            return 1;
+        }
 
 
-/* =========================================================
-   GŁÓWNA ANIMACJA
-   ========================================================= */
+        /*
+            Częściowe zaćmienie.
+        */
 
-let animationStart = null;
-
-function animate(timestamp) {
-    if (!animationStart) {
-        animationStart = timestamp;
-    }
-
-    const elapsed =
-        timestamp - animationStart;
-
-    const rawProgress =
-        clamp(
-            elapsed / SETTINGS.duration,
+        return clamp(
+            1 -
+            (
+                distance -
+                (moonRadius - sunRadius)
+            ) /
+            (
+                (sunRadius + moonRadius) -
+                (moonRadius - sunRadius)
+            ),
             0,
             1
         );
-
-    const moonX =
-        updateMoon(rawProgress);
-
-    const coverage =
-        calculateCoverage(moonX);
-
-    updateSky(coverage);
-    updateSun(coverage);
-    updateCorona(coverage);
-    updateStars(coverage);
-    updateDiamondRing(coverage, moonX);
-
-    /*
-        Tekst znika w miarę zbliżania się
-        do totality.
-    */
-
-    const infoOpacity =
-        clamp(1 - coverage * 2.8, 0, 1);
-
-    info.style.opacity =
-        infoOpacity;
-
-    /*
-        Komunikat pokazujemy dopiero podczas
-        rzeczywistego totality.
-    */
-
-    if (coverage > .995) {
-        totalityMessage.style.opacity = "1";
-        totalityMessage.style.transform =
-            "translate(-50%, -50%) scale(1)";
-    } else {
-        totalityMessage.style.opacity = "0";
-        totalityMessage.style.transform =
-            "translate(-50%, -50%) scale(.8)";
     }
 
-    if (rawProgress < 1) {
-        requestAnimationFrame(animate);
-    } else {
+
+    /*
+    ============================================================
+        ŚWIATŁO SŁOŃCA
+    ============================================================
+    */
+
+    function updateSun(coverage) {
+
         /*
-            Po zakończeniu zostawiamy scenę
-            w stanie końcowym.
+            WAŻNE:
+
+            Nie chowamy tarczy Słońca!
+
+            Księżyc fizycznie zasłania ją swoim
+            czarnym elementem.
+
+            My tylko zmniejszamy POŚWIATĘ.
         */
 
-        updateMoon(1);
+        const glow =
+            Math.pow(1 - coverage, 2.4);
+
+        sunGlow.style.opacity =
+            glow;
+
+
+        /*
+            Sama tarcza Słońca pozostaje w pełni widoczna
+            pod Księżycem.
+        */
+
+        sunCore.style.opacity = "1";
     }
-}
 
-
-/* =========================================================
-   START
-   ========================================================= */
-
-function startEclipse() {
-    animationStart = null;
 
     /*
-        Reset
+    ============================================================
+        NIEBO
+    ============================================================
     */
 
-    moon.style.left =
-        `calc(50% + ${SETTINGS.startX}px)`;
+    function updateSky(coverage) {
 
-    moon.style.top =
-        "50%";
+        const darkness =
+            Math.pow(coverage, 2.0);
 
-    moon.style.display =
-        "block";
+        const r =
+            Math.round(48 - darkness * 44);
 
-    stars.style.opacity = "0";
+        const g =
+            Math.round(73 - darkness * 67);
 
-    corona.style.opacity = "0";
-
-    diamondRing.style.opacity = "0";
-
-    totalityMessage.style.opacity = "0";
-
-    info.style.opacity = "1";
-
-    requestAnimationFrame(animate);
-}
+        const b =
+            Math.round(108 - darkness * 92);
 
 
-/* =========================================================
-   START AUTOMATYCZNY
-   ========================================================= */
+        sky.style.background = `
+            radial-gradient(
+                ellipse at 50% 48%,
 
-window.addEventListener(
-    "load",
-    () => {
-        startEclipse();
+                rgb(
+                    ${r + 8},
+                    ${g + 8},
+                    ${b + 8}
+                ) 0%,
+
+                rgb(
+                    ${r},
+                    ${g},
+                    ${b}
+                ) 35%,
+
+                rgb(
+                    ${Math.max(r - 8, 2)},
+                    ${Math.max(g - 10, 3)},
+                    ${Math.max(b - 15, 5)}
+                ) 70%,
+
+                #02030a 100%
+            )
+        `;
     }
-);
+
+
+    /*
+    ============================================================
+        GWIAZDY
+    ============================================================
+    */
+
+    function updateStars(coverage) {
+
+        let opacity = 0;
+
+        /*
+            Pojawiają się dopiero przy mocnym zaćmieniu.
+        */
+
+        if (coverage > 0.70) {
+
+            opacity =
+                (coverage - 0.70) / 0.30;
+        }
+
+        opacity =
+            Math.pow(
+                clamp(opacity, 0, 1),
+                0.8
+            );
+
+        stars.style.opacity =
+            opacity;
+    }
+
+
+    /*
+    ============================================================
+        KORONA
+    ============================================================
+    */
+
+    function updateCorona(coverage) {
+
+        let opacity = 0;
+
+        /*
+            Korona pojawia się dopiero,
+            kiedy Księżyc prawie całkowicie
+            zasłoni Słońce.
+        */
+
+        if (coverage > 0.94) {
+
+            opacity =
+                (coverage - 0.94) / 0.06;
+        }
+
+        opacity =
+            clamp(opacity, 0, 1);
+
+        corona.style.opacity =
+            opacity * 0.95;
+    }
+
+
+    /*
+    ============================================================
+        DIAMOND RING
+    ============================================================
+    */
+
+    function updateDiamondRing(coverage, moonX) {
+
+        /*
+            Diamond ring tylko przez bardzo krótki moment.
+        */
+
+        if (
+            coverage < 0.985 ||
+            coverage > 0.999
+        ) {
+
+            diamondRing.style.opacity = "0";
+
+            return;
+        }
+
+
+        const t =
+            (coverage - 0.985) /
+            0.014;
+
+
+        const intensity =
+            Math.sin(t * Math.PI);
+
+
+        /*
+            Po której stronie jest ostatni
+            kawałek światła?
+        */
+
+        const direction =
+            moonX < 0 ? 1 : -1;
+
+
+        diamondRing.style.left =
+            `calc(50% + ${direction * 145}px)`;
+
+
+        diamondRing.style.top =
+            "50%";
+
+
+        diamondRing.style.opacity =
+            intensity;
+
+
+        diamondRing.style.transform =
+            `
+            translate(-50%, -50%)
+            scale(${0.3 + intensity * 1.2})
+            `;
+    }
+
+
+    /*
+    ============================================================
+        TEKST
+    ============================================================
+    */
+
+    function updateText(coverage) {
+
+        /*
+            Zwykły tekst powoli znika.
+        */
+
+        info.style.opacity =
+            clamp(
+                1 - coverage * 3,
+                0,
+                1
+            );
+
+
+        /*
+            Komunikat pojawia się dopiero
+            podczas całkowitego zaćmienia.
+        */
+
+        if (coverage >= 0.995) {
+
+            totalityMessage.style.opacity = "1";
+
+            totalityMessage.style.transform =
+                "translate(-50%, -50%) scale(1)";
+
+        } else {
+
+            totalityMessage.style.opacity = "0";
+
+            totalityMessage.style.transform =
+                "translate(-50%, -50%) scale(.8)";
+        }
+    }
+
+
+    /*
+    ============================================================
+        ANIMACJA
+    ============================================================
+    */
+
+    let startTime = null;
+
+
+    function animate(timestamp) {
+
+        if (startTime === null) {
+            startTime = timestamp;
+        }
+
+
+        const elapsed =
+            timestamp - startTime;
+
+
+        const progress =
+            clamp(
+                elapsed / DURATION,
+                0,
+                1
+            );
+
+
+        /*
+            1. Przesuwamy Księżyc.
+        */
+
+        const moonX =
+            updateMoon(progress);
+
+
+        /*
+            2. Sprawdzamy, ile Słońca
+               powinno być zakryte.
+        */
+
+        const coverage =
+            getCoverage(moonX);
+
+
+        /*
+            3. Aktualizujemy resztę efektów.
+        */
+
+        updateSun(coverage);
+        updateSky(coverage);
+        updateStars(coverage);
+        updateCorona(coverage);
+        updateDiamondRing(coverage, moonX);
+        updateText(coverage);
+
+
+        /*
+            Lecimy dalej.
+        */
+
+        if (progress < 1) {
+
+            requestAnimationFrame(animate);
+
+        } else {
+
+            /*
+                Koniec animacji.
+            */
+
+            moon.style.left =
+                `calc(50% + ${END_X}px)`;
+
+            moon.style.top =
+                "50%";
+        }
+    }
+
+
+    /*
+    ============================================================
+        START
+    ============================================================
+    */
+
+    function startEclipse() {
+
+        startTime = null;
+
+        /*
+            Ustawiamy Księżyc daleko poza Słońcem.
+        */
+
+        moon.style.left =
+            `calc(50% + ${START_X}px)`;
+
+        moon.style.top =
+            "50%";
+
+
+        /*
+            Resetujemy efekty.
+        */
+
+        sunCore.style.opacity = "1";
+
+        sunGlow.style.opacity = "1";
+
+        corona.style.opacity = "0";
+
+        stars.style.opacity = "0";
+
+        diamondRing.style.opacity = "0";
+
+        info.style.opacity = "1";
+
+        totalityMessage.style.opacity = "0";
+
+
+        requestAnimationFrame(animate);
+    }
+
+
+    /*
+    ============================================================
+        URUCHOMIENIE
+    ============================================================
+    */
+
+    startEclipse();
+
+});
