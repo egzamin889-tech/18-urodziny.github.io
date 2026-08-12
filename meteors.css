@@ -139,21 +139,27 @@ body {
 
     position: absolute;
 
-    width: 130px;
-    height: 3px;
+    width: 150px;
+    height: 4px;
 
-    right: 2px;
-    top: 1px;
+    right: 0;
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        rotate(-35deg);
 
     transform-origin: right center;
 
     background:
         linear-gradient(
             to left,
-            rgba(255, 245, 190, 0.95),
-            rgba(255, 190, 70, 0.45),
+            rgba(255, 250, 210, 1),
+            rgba(255, 190, 70, 0.6),
             transparent
         );
+
+    border-radius: 50%;
 
     filter: blur(1px);
 }
@@ -167,8 +173,8 @@ body {
 }
 
 .meteor.big::before {
-    width: 210px;
-    height: 4px;
+    width: 230px;
+    height: 5px;
 }
 
 
