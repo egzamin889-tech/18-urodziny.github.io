@@ -33,6 +33,12 @@ const giftData = {
         image: "NocMeteorytów.jpg",
         title: "",
         text: "Chciałes sobie wyobrażać wspólne oglądania spadających meteorytów.. teraz już nie musisz. W głównym menu je masz.."
+    },
+
+    jaXD: {
+        image: "",
+        title: "",
+        text: "Dostałeś zdjęcie Janka to masz też moje. NIE NO ŻART XD, ale kiedyś pewnie dostaniesz."
     }
 
 };
