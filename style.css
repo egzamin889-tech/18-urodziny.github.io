@@ -818,3 +818,18 @@ body {
 
     background: rgba(255, 255, 255, 0.2);
 }
+
+.gift-video {
+    display: block;
+
+    width: min(700px, 85vw);
+    max-height: 60vh;
+
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+
+    object-fit: contain;
+
+    background: black;
+}
