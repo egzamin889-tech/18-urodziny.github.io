@@ -35,10 +35,10 @@ const giftData = {
         text: "Chciałes sobie wyobrażać wspólne oglądania spadających meteorytów.. teraz już nie musisz. W głównym menu je masz.."
     },
 
-    jaXD: {
-        image: "",
+    torcik: {
+        image: "tort.png",
         title: "",
-        text: "Dostałeś zdjęcie Janka to masz też moje. NIE NO ŻART XD, ale kiedyś pewnie dostaniesz."
+        text: "W menu głównym masz tort.. niestety nie z Ranczo, ani nie prawdziwy.."
     },
 
     RanczoFilm: {
