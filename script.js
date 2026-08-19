@@ -39,6 +39,12 @@ const giftData = {
         image: "",
         title: "",
         text: "Dostałeś zdjęcie Janka to masz też moje. NIE NO ŻART XD, ale kiedyś pewnie dostaniesz."
+    },
+
+    RanczoFilm: {
+        image: "",
+        title: "",
+        text: "Jedna sekunda z każdego filmu Ranczo. Dlaczego? Nie wiem.."
     }
 
 };
